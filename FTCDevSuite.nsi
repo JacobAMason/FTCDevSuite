@@ -1,6 +1,8 @@
 !define PRODUCT_NAME "FTC Android Development Suite"
 !define PRODUCT_VERSION "1.0.0"
 
+!addplugindir "plugins"
+
 ;--------------------------------
 Name "${PRODUCT_NAME}"
 Caption "FTC Dev Suite ${PRODUCT_VERSION}"
