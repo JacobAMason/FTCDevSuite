@@ -90,15 +90,16 @@ SectionEnd
 
 
 Section "Android Studio" AndroidStudio
-  inetc::get /caption "Robots" \
-                      "http://www.google.com/robots.txt" \
-                      "$INSTDIR\robots.txt" /end
-  md5dll::GetMD5File "$INSTDIR\robots.txt"
+  inetc::get /WEAKSECURITY /NOCOOKIES \
+             /caption "Android Studio 1.5.1.0" \
+             "http://dl.google.com/dl/android/studio/install/1.5.1.0/android-studio-bundle-141.2456560-windows.exe" \
+             "$INSTDIR\android-studio-bundle-141.2456560-windows.exe" /end
+  md5dll::GetMD5File "$INSTDIR\android-studio-bundle-141.2456560-windows.exe"
   Pop $0
   ${If} "21ba308a05a1fdd485ae8e266a792adf" == $0
-    DetailPrint "Downloaded robots.txt"
+    DetailPrint "Downloaded Android Studio 1.5.1.0"
   ${Else}
-    DetailPrint "robots.txt md5 didn't match"
+    DetailPrint "Android Studio 1.5.1.0 md5 didn't match [$0]"
   ${EndIf} 
 SectionEnd
 
@@ -118,7 +119,7 @@ Section "Java 7 SDK" installJDK
   ${If} "8c6c888993144fdbdec6f5d4e19b57a3" == $0
     DetailPrint "Downloaded Java 7 SDK"
   ${Else}
-    DetailPrint "Java 7 SDK md5 didn't match"
+    DetailPrint "Java 7 SDK md5 didn't match [$0]"
   ${EndIf} 
 SectionEnd
 
