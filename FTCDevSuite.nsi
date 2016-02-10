@@ -27,10 +27,10 @@ Var StartMenuFolder
 
 !include "MUI2.nsh"
 
-!define MUI_WELCOMEFINISHPAGE_BITMAP "FIRST_Wizard.bmp"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "FIRST_Wizard.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "img\FIRST_Wizard.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "img\FIRST_Wizard.bmp"
 !define MUI_HEADERIMAGE
-  !define MUI_HEADERIMAGE_BITMAP "FIRST_Header.bmp"
+  !define MUI_HEADERIMAGE_BITMAP "img\FIRST_Header.bmp"
 
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
@@ -79,7 +79,7 @@ Var StartMenuFolder
 Section "Android Studio" AndroidStudio
   SetOutPath "$INSTDIR"
 
-  File test.txt
+  File data\test.txt
 
   ;Store installation folder 
   WriteRegStr HKCU "Software\FTC Android Development Suite" "" $INSTDIR
