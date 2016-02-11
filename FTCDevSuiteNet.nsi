@@ -5,12 +5,14 @@
 !include "WordFunc.nsh"
 !addplugindir "plugins"
 
+SetCompressor /FINAL /SOLID lzma
+
 ;--------------------------------
 Name "${PRODUCT_NAME}"
 Caption "FTC Dev Suite ${PRODUCT_VERSION}"
 
 ;The file to write
-OutFile "FTCDevSuite.${PRODUCT_VERSION}.exe"
+OutFile "FTCDevSuite.Net.${PRODUCT_VERSION}.exe"
 
 ;The default installation directory
 InstallDir $DESKTOP\JacobInstaller
@@ -19,7 +21,7 @@ InstallDirRegKey HKCU "Software\FTC Android Development Suite" ""
 RequestExecutionLevel user
 ShowInstDetails show
 ShowUninstDetails show
-BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} - Jacob Mason"
+BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} Net Installer - Jacob Mason"
 
 ;--------------------------------
 ;Variables
