@@ -2,6 +2,7 @@
 !define PRODUCT_VERSION "1.0.0"
 
 !include x64.nsh
+!include "WordFunc.nsh"
 !addplugindir "plugins"
 
 ;--------------------------------
@@ -78,46 +79,47 @@ Var JAVA_INSTALL_DESC
 ;--------------------------------
 ;Installer Sections
 
+Section "-Setup Output Path"
+   SetOutPath "$INSTDIR"
+   WriteRegStr HKCU "Software\FTC Android Development Suite" "" $INSTDIR
+SectionEnd
+
+
+
 Section "Test Text" testText
-  SetOutPath "$INSTDIR"
-
   File data\test.txt
-
-  ;Store installation folder 
-  WriteRegStr HKCU "Software\FTC Android Development Suite" "" $INSTDIR
 SectionEnd
 
 
 
 Section "Android Studio" AndroidStudio
-  inetc::get /WEAKSECURITY /NOCOOKIES \
+  inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
              /caption "Android Studio 1.5.1.0" \
              "http://dl.google.com/dl/android/studio/install/1.5.1.0/android-studio-bundle-141.2456560-windows.exe" \
              "$INSTDIR\android-studio-bundle-141.2456560-windows.exe" /end
-  md5dll::GetMD5File "$INSTDIR\android-studio-bundle-141.2456560-windows.exe"
+  DetailPrint "Checking SHA1 hash for Android Studio 1.5.1.0"
+  Crypto::HashFile "SHA1" "$INSTDIR\android-studio-bundle-141.2456560-windows.exe"
   Pop $0
-  ${If} "21ba308a05a1fdd485ae8e266a792adf" == $0
-    DetailPrint "Downloaded Android Studio 1.5.1.0"
+  ${If} "6FFE608B1DD39041A578019EB3FEDB5EE62BA545" == $0
+    DetailPrint "Successfully downloaded Android Studio 1.5.1.0"
   ${Else}
-    DetailPrint "Android Studio 1.5.1.0 md5 didn't match [$0]"
+    DetailPrint "Android Studio 1.5.1.0 SHA1 didn't match [$0]"
   ${EndIf} 
 SectionEnd
 
 
 
-Section "Java 7 SDK" installJDK
+Section "Java 7 SDK" JavaSDK
   inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
              /HEADER "Cookie: oraclelicense=accept-securebackup-cookie" \
              /caption "Java 7.80 SDK" \
              "http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-windows-i586.exe" \
              "$INSTDIR\jdk-7u80-windows-i586.exe" /end
+  DetailPrint "Checking SHA1 hash for Java 7 SDK"
+  Crypto::HashFile "MD5" "$INSTDIR\jdk-7u80-windows-i586.exe"
   Pop $0
-  MessageBox MB_OK "Install status: $0" 
-
-  md5dll::GetMD5File "$INSTDIR\jdk-7u80-windows-i586.exe"
-  Pop $0
-  ${If} "8c6c888993144fdbdec6f5d4e19b57a3" == $0
-    DetailPrint "Downloaded Java 7 SDK"
+  ${If} "8C6C888993144FDBDEC6F5D4E19B57A3" == $0
+    DetailPrint "Successfully downloaded Java 7 SDK"
   ${Else}
     DetailPrint "Java 7 SDK md5 didn't match [$0]"
   ${EndIf} 
@@ -125,7 +127,7 @@ SectionEnd
 
 
 
-Section "-Write Uninstaller"
+Section "-Write Uninstaller and Shortcuts"
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
@@ -175,12 +177,13 @@ Function .onInit
     Goto +2
     MessageBox MB_OK "Couldn't find an installed JDK."
 
-  ${If} $JDK_VERSION == "1.7"
-    SectionSetFlags ${installJDK} ${SF_RO}
-    StrCpy $JAVA_INSTALL_DESC "You already have JDK 1.7 installed"
-  ${Else}    
-    SectionSetFlags ${installJDK} ${SF_SELECTED}
+  ${VersionCompare} $JDK_VERSION "1.7" $0
+  ${If} $0 == "2"
+    SectionSetFlags ${JavaSDK} ${SF_SELECTED}
     StrCpy $JAVA_INSTALL_DESC "Installs Java Development Kit 1.7.80"
+  ${Else}    
+    SectionSetFlags ${JavaSDK} ${SF_RO}
+    StrCpy $JAVA_INSTALL_DESC "You already have a JDK installed"
   ${EndIf}
 
 FunctionEnd
@@ -190,10 +193,10 @@ FunctionEnd
 
 ;Language strings
 LangString DESC_AndroidStudio ${LANG_ENGLISH} "Install Android Studio if you haven't already"
-LangString DESC_installJDK ${LANG_ENGLISH} $JAVA_INSTALL_DESC
+LangString DESC_JavaSDK ${LANG_ENGLISH} $JAVA_INSTALL_DESC
 
 ;Assign language strings to sections
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${AndroidStudio} $(DESC_AndroidStudio)
-  !insertmacro MUI_DESCRIPTION_TEXT ${installJDK} $(DESC_installJDK)
+  !insertmacro MUI_DESCRIPTION_TEXT ${JavaSDK} $(DESC_JavaSDK)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
