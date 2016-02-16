@@ -1,9 +1,17 @@
 !define PRODUCT_NAME "FTC Android Development Suite"
-!define PRODUCT_VERSION "1.0.0"
-
-!include x64.nsh
+!include "x64.nsh"
 !include "WordFunc.nsh"
-!addplugindir "plugins"
+!ifndef INSTALLER_TYPE
+  Abort "You must define the INSTALLER_TYPE as either Full or Net"
+!endif
+
+!if ${INSTALLER_TYPE} != "Full"
+!if ${INSTALLER_TYPE} != "Net"
+  !error "You must define the INSTALLER_TYPE as either Full or Net"
+!endif
+!endif
+
+!include "${INSTALLER_TYPE}.nsh"
 
 SetCompressor /FINAL /SOLID lzma
 
@@ -12,7 +20,7 @@ Name "${PRODUCT_NAME}"
 Caption "FTC Dev Suite ${PRODUCT_VERSION}"
 
 ;The file to write
-OutFile "FTCDevSuite.Full.${PRODUCT_VERSION}.exe"
+OutFile "FTCDevSuite.${INSTALLER_TYPE}.${PRODUCT_VERSION}.exe"
 
 ;The default installation directory
 InstallDir $DESKTOP\JacobInstaller
@@ -21,7 +29,7 @@ InstallDirRegKey HKCU "Software\FTC Android Development Suite" ""
 RequestExecutionLevel user
 ShowInstDetails show
 ShowUninstDetails show
-BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} Full Installer - Jacob Mason"
+BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} ${INSTALLER_TYPE} Installer - Jacob Mason"
 
 ;--------------------------------
 ;Variables
@@ -50,7 +58,7 @@ Var JAVA_INSTALL_DESC
 
 !define MUI_WELCOMEPAGE_TITLE "Welcome to the ${PRODUCT_NAME} Setup Wizard"
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "${NSISDIR}\Docs\Modern UI\License.txt"
+!insertmacro MUI_PAGE_LICENSE "data\LICENSE"
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 
@@ -93,17 +101,7 @@ Section "Test Text" testText
 SectionEnd
 
 
-
-Section "Android Studio" AndroidStudio
-  File "data\android-studio-bundle-141.2456560-windows.exe"
-SectionEnd
-
-
-
-; Section "Java 7 SDK" JavaSDK
-;   File "data\jdk-7u80-windows-i586.exe"
-; SectionEnd
-
+!insertmacro "FTC.sections"
 
 
 Section "-Write Uninstaller and Shortcuts"

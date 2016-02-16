@@ -16,16 +16,16 @@ Write-Color -Text "Getting Dependencies" -Color "magenta"
 echo ""
 
 
-$localfile = "data/android-studio-bundle-141.2456560-windows.exe"
+$localfile = "data/android-studio-ide-141.2456560-windows.exe"
 if (!(Test-Path $localfile)) {
-    echo "Couldn't find Android Studio. Downloading it now: please wait."
-    $client.DownloadFile("http://dl.google.com/dl/android/studio/install/1.5.1.0/android-studio-bundle-141.2456560-windows.exe", $localfile)
+    Write-Color -Text "Couldn't find Android Studio. Downloading it now: please wait." -Color "yellow"
+    $client.DownloadFile("http://dl.google.com/dl/android/studio/install/1.5.1.0/android-studio-ide-141.2456560-windows.exe", $localfile)
 } else {
     Write-Color -Text "Android Studio found." -Color "green"
 }
 echo "Checking sha1 hash..."
 $hash = [System.BitConverter]::ToString($sha1.ComputeHash([System.IO.File]::ReadAllBytes($localfile)))
-if ($hash -eq "6F-FE-60-8B-1D-D3-90-41-A5-78-01-9E-B3-FE-DB-5E-E6-2B-A5-45") {
+if ($hash -eq "8D-01-6B-90-BF-04-EB-AC-6C-E5-48-B1-97-6B-0C-8A-4F-46-B5-F9") {
     Write-Color -Text "Android Studio hashes match" -Color "green"
 } else {
     Write-Color -Text "ERROR: Android Studio hashes DON'T match:" -Color "red"
@@ -53,14 +53,10 @@ if ($hash -eq "8C-6C-88-89-93-14-4F-DB-DE-C6-F5-D4-E1-9B-57-A3") {
 
 
 
-$PRODUCT_VERSION = "1.0.0"
-
 echo ""
-$OUTFILE = "FTCDevSuite.Net.$PRODUCT_VERSION.exe"
 Write-Color -Text "Building Net installer" -Color "magenta"
-& "./buildtools/makensis.exe" /DOUTFILE=$OUTFILE /DPRODUCT_VERSION=$PRODUCT_VERSION /V2 FTCDevSuiteNet.nsi
+& "./buildtools/makensis.exe" /DINSTALLER_TYPE=Net /DPRODUCT_VERSION="1.0.0" /V2 FTCDevSuite.nsi
 
 echo ""
-$OUTFILE = "FTCDevSuite.Full.$PRODUCT_VERSION.exe"
 Write-Color -Text "Building Full installer (this could take a bit)" -Color "magenta"
-#& "./buildtools/makensis.exe" /DOUTFILE=$OUTFILE /DPRODUCT_VERSION=$PRODUCT_VERSION /V2 FTCDevSuiteNet.nsi
+& "./buildtools/makensis.exe" /DINSTALLER_TYPE=Full /DPRODUCT_VERSION="1.0.0" /V2 FTCDevSuite.nsi
