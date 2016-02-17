@@ -173,12 +173,13 @@ Try {
     & "./buildtools/makensis.exe" /DINSTALL_TYPE=Net /DPRODUCT_VERSION="1.0.0" /V2 FTCDevSuite.nsi
 
     echo ""
-    Write-Color -Text "Building Full installer (this could take a bit)" -Color "magenta"
+    Write-Color -Text "Building Full installer (takes ~10m)" -Color "magenta"
     & "./buildtools/makensis.exe" /DINSTALL_TYPE=Full /DPRODUCT_VERSION="1.0.0" /V2 FTCDevSuite.nsi
 
     echo ""
     $time= Get-Date
     Write-Host "Completed at $time"
+    bellExit
     
 } Catch [Exception] {
     echo $_.Exception|format-list -force
