@@ -1,5 +1,6 @@
 !macro FTC.sections
 Section "Java 7 SDK" JavaSDK
+  AddSize 144000
   SetOutPath "$TEMP"
   ${If} ${RunningX64}
     inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
@@ -41,6 +42,7 @@ SectionEnd
 
 
 Section "Android Studio" AndroidStudio
+  AddSize 1700000
   SetOutPath "$TEMP"
   inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
              /caption "Android Studio 1.5.1.0" \
@@ -62,6 +64,7 @@ SectionEnd
 
 
 Section "Android SDK" AndroidSDK
+  AddSize 316400
   SetOutPath "$TEMP"
   File "data\get_sdk_packages.bat"
   inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
@@ -87,6 +90,7 @@ SectionEnd
 
 
 Section "FTC App" FTCapp
+  AddSize 71700
   SetOutPath "$INSTDIR"
   inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
              /caption "FTC App - ftctechnh/ftc_app/master" \

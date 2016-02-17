@@ -57,6 +57,9 @@ Var JAVA_INSTALL_DESC
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "data\LICENSE"
 !insertmacro MUI_PAGE_COMPONENTS
+
+!define MUI_DIRECTORYPAGE_TEXT_TOP "Choose the folder in which to install the FTC App"
+!define MUI_DIRECTORYPAGE_TEXT_DESTINATION "If you chose to install the FTC App, this is the folder in which the App will be installed. Do NOT create a new folder to store the App in. The App will create a folder called 'ftc_app' in which the application will be installed."
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 
@@ -109,11 +112,20 @@ FunctionEnd
 ;Descriptions
 
 ;Language strings
-LangString DESC_AndroidStudio ${LANG_ENGLISH} "Install Android Studio if you haven't already"
 LangString DESC_JavaSDK ${LANG_ENGLISH} $JAVA_INSTALL_DESC
+LangString DESC_AndroidStudio ${LANG_ENGLISH} "Installs Android Studio 1.5.1"
+LangString DESC_AndroidSDK ${LANG_ENGLISH} "Installs the proper SDK and API tools. You probably need this."
+!if ${INSTALL_TYPE} == "Full"
+  LangString DESC_FTCapp ${LANG_ENGLISH} "Installs a copy of the FTC App master@92eb63a"
+!endif
+!if ${INSTALL_TYPE} == "Net"
+  LangString DESC_FTCapp ${LANG_ENGLISH} "Downloads the latest stable FTC App from GitHub"
+!endif
 
 ;Assign language strings to sections
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-  !insertmacro MUI_DESCRIPTION_TEXT ${AndroidStudio} $(DESC_AndroidStudio)
   !insertmacro MUI_DESCRIPTION_TEXT ${JavaSDK} $(DESC_JavaSDK)
+  !insertmacro MUI_DESCRIPTION_TEXT ${AndroidStudio} $(DESC_AndroidStudio)
+  !insertmacro MUI_DESCRIPTION_TEXT ${AndroidSDK} $(DESC_AndroidSDK)
+  !insertmacro MUI_DESCRIPTION_TEXT ${FTCapp} $(DESC_FTCapp)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
