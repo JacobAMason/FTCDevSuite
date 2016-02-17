@@ -95,6 +95,7 @@ if ($hash -eq "F9-B5-9D-72-41-36-49-D3-1E-63-32-07-E3-1F-45-64-43-E7-EA-0B") {
 }
 
 
+echo ""
 Write-Color -Text "Getting SDK Tools and APIs" -Color "magenta"
 echo y | & "./data/android-sdk/tools/android.bat" --silent update sdk --all --no-ui --filter "platform-tools,build-tools-21.1.2,android-19,extra-google-usb_driver" | out-null
 
