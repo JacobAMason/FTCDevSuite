@@ -24,7 +24,14 @@ SectionEnd
 
 
 Section "Android SDK" AndroidSDK
-  SetOutPath "$LOCALAPPDATA"
+  SetOutPath "$LOCALAPPDATA\Android"
   File /r "data\android-sdk"
+SectionEnd
+
+
+
+Section "FTC App" FTCapp
+  SetOutPath "$INSTDIR"
+  File /r "data\ftc_app"
 SectionEnd
 !macroend

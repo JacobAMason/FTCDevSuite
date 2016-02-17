@@ -23,12 +23,11 @@ Caption "FTC Dev Suite ${PRODUCT_VERSION}"
 OutFile "FTCDevSuite.${INSTALL_TYPE}.${PRODUCT_VERSION}.exe"
 
 ;The default installation directory
-InstallDir $DESKTOP\JacobInstaller
+InstallDir $DOCUMENTS
 ;Get installation folder from registry if available
 InstallDirRegKey HKCU "Software\FTC Android Development Suite" ""
 RequestExecutionLevel user
 ShowInstDetails show
-ShowUninstDetails show
 BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} ${INSTALL_TYPE} Installer - Jacob Mason"
 
 ;--------------------------------
