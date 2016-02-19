@@ -17,7 +17,7 @@ SetCompressor /FINAL /SOLID lzma
 
 ;--------------------------------
 Name "${PRODUCT_NAME}"
-Caption "FTC Dev Suite ${PRODUCT_VERSION}"
+Caption "FTC Development Suite ${PRODUCT_VERSION}"
 
 ;The file to write
 OutFile "FTCDevSuite.${INSTALL_TYPE}.${PRODUCT_VERSION}.exe"
@@ -26,7 +26,7 @@ OutFile "FTCDevSuite.${INSTALL_TYPE}.${PRODUCT_VERSION}.exe"
 InstallDir $DOCUMENTS
 ;Get installation folder from registry if available
 InstallDirRegKey HKCU "Software\FTC Android Development Suite" ""
-RequestExecutionLevel user
+RequestExecutionLevel admin
 ShowInstDetails show
 BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} ${INSTALL_TYPE} Installer - Jacob Mason"
 

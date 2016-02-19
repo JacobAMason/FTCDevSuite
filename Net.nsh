@@ -19,6 +19,8 @@ Section "Java 7 SDK" JavaSDK
       Abort "Java 7 SDK md5 didn't match [$0]"
     ${EndIf}
     Delete "$TEMP\jdk-7u80-windows-x64.exe"
+    SetRegView 64
+    WriteRegExpandStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "JAVA_HOME" "$PROGRAMFILES64\Java\jdk1.7.0_80"
   ${Else}
     inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
                /HEADER "Cookie: oraclelicense=accept-securebackup-cookie" \
@@ -36,7 +38,10 @@ Section "Java 7 SDK" JavaSDK
       Abort "Java 7 SDK md5 didn't match [$0]"
     ${EndIf}
     Delete "$TEMP\jdk-7u80-windows-i586.exe"
+    SetRegView 32
+    WriteRegExpandStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "JAVA_HOME" "$PROGRAMFILES32\Java\jdk1.7.0_80"
   ${EndIf} 
+  SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
 SectionEnd
 
 
@@ -83,6 +88,12 @@ Section "Android SDK" AndroidSDK
   ${EndIf} 
   Delete "$TEMP\installer_r24.4.1-windows.exe"
 
+  ${If} ${RunningX64}
+    SetRegView 64
+  ${EndIf}
+  WriteRegExpandStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "ANDROID_HOME" "$LOCALAPPDATA\Android\android-sdk"
+  SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
+  
   DetailPrint "Downloading SDK packages and APIs"
   nsExec::Exec "$TEMP\get_sdk_packages.bat"
 SectionEnd
