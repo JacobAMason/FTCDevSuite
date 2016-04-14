@@ -4,7 +4,7 @@ At the beginning of this season, the largest problem that teams seemed to be hav
   
 This "suite" is really just a Windows-specific installer built with [NSIS]([http://nsis.sourceforge.net/).  If time allows, I will attempt to repeat this effort for other operating systems, but if you are so inclined  and want to beat me to it, feel free.  
 
-[**Download FTC Development Suite 1.0.0**](https://github.com/JacobAMason/FTCDevSuite/releases/tag/v1.0.0)
+[**Download FTC Development Suite 1.0.1**](https://github.com/JacobAMason/FTCDevSuite/releases/tag/v1.0.1)
 
 ### What does this set up for me?
 
@@ -15,7 +15,7 @@ This "suite" is really just a Windows-specific installer built with [NSIS]([http
    - Android API 19 - SDK Platform
    - Build Tools 21.1.2
    - Google USB Driver (11 or latest)
- - FTC Robot Controller source code ([master@92eb63a](https://github.com/ftctechnh/ftc_app/tree/92eb63af30ed434a5f3953e4f5dd261b8052d6bb) or latest)
+ - FTC Robot Controller source code (latest at compile<sup>[1](#latest-at-compile)</sup>)
 
 ### Which installer should I use?
 **Full Installer**  
@@ -28,3 +28,6 @@ If you want to use this installer to guarantee that you've set up your personal 
 
 ### Contact
 If you have have issues with the installer either [email me](mailto:jacob@jacobmason.net) or, preferably, [open an issue](https://github.com/JacobAMason/FTCDevSuite/issues/new).
+
+
+<a name="latest-at-compile">1</a>: The version of ftc_app that installs when running the Net installer is the latest version on the master branch of the official repository. However, the version of ftc_app in the Full installer is the latest version on the master branch *at the time the installer was* ***first*** *compiled*.

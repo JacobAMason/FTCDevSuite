@@ -116,7 +116,7 @@ LangString DESC_JavaSDK ${LANG_ENGLISH} $JAVA_INSTALL_DESC
 LangString DESC_AndroidStudio ${LANG_ENGLISH} "Installs Android Studio 1.5.1"
 LangString DESC_AndroidSDK ${LANG_ENGLISH} "Installs the proper SDK and API tools. You probably need this."
 !if ${INSTALL_TYPE} == "Full"
-  LangString DESC_FTCapp ${LANG_ENGLISH} "Installs a copy of the FTC App master@92eb63a"
+  LangString DESC_FTCapp ${LANG_ENGLISH} "Installs a copy of the FTC App"
 !endif
 !if ${INSTALL_TYPE} == "Net"
   LangString DESC_FTCapp ${LANG_ENGLISH} "Downloads the latest stable FTC App from GitHub"
