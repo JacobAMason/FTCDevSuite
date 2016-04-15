@@ -4,7 +4,7 @@ At the beginning of this season, the largest problem that teams seemed to be hav
   
 This "suite" is really just a Windows-specific installer built with [NSIS]([http://nsis.sourceforge.net/).  If time allows, I will attempt to repeat this effort for other operating systems, but if you are so inclined  and want to beat me to it, feel free.  
 
-[**Download FTC Development Suite 1.0.1**](https://github.com/JacobAMason/FTCDevSuite/releases/tag/v1.0.1)
+[**Download FTC Development Suite 1.0.2**](https://github.com/JacobAMason/FTCDevSuite/releases/tag/v1.0.2)
 
 ### What does this set up for me?
 
