@@ -170,11 +170,11 @@ Try {
 
     echo ""
     Write-Color -Text "Building Net installer" -Color "magenta"
-    & "./buildtools/makensis.exe" /DINSTALL_TYPE=Net /DPRODUCT_VERSION="1.0.2" /V2 FTCDevSuite.nsi
+    & "./buildtools/makensis.exe" /DINSTALL_TYPE=Net /DPRODUCT_VERSION="1.0.3" /V2 FTCDevSuite.nsi
 
     echo ""
     Write-Color -Text "Building Full installer (takes ~10m)" -Color "magenta"
-    & "./buildtools/makensis.exe" /DINSTALL_TYPE=Full /DPRODUCT_VERSION="1.0.2" /V2 FTCDevSuite.nsi
+    & "./buildtools/makensis.exe" /DINSTALL_TYPE=Full /DPRODUCT_VERSION="1.0.3" /V2 FTCDevSuite.nsi
 
     echo ""
     $time= Get-Date
