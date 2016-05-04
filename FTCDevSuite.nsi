@@ -1,4 +1,4 @@
-!define PRODUCT_NAME "FTC Android Development Suite"
+!define PRODUCT_NAME "FIRST Android Development Suite"
 !include "x64.nsh"
 !include "WordFunc.nsh"
 !ifndef INSTALL_TYPE
@@ -17,15 +17,15 @@ SetCompressor /FINAL /SOLID lzma
 
 ;--------------------------------
 Name "${PRODUCT_NAME}"
-Caption "FTC Development Suite ${PRODUCT_VERSION}"
+Caption "FIRST Development Suite ${PRODUCT_VERSION}"
 
 ;The file to write
-OutFile "FTCDevSuite.${INSTALL_TYPE}.${PRODUCT_VERSION}.exe"
+OutFile "FIRSTDevSuite.${INSTALL_TYPE}.${PRODUCT_VERSION}.exe"
 
 ;The default installation directory
 InstallDir $DOCUMENTS
 ;Get installation folder from registry if available
-InstallDirRegKey HKCU "Software\FTC Android Development Suite" ""
+InstallDirRegKey HKCU "Software\FIRST Android Development Suite" ""
 RequestExecutionLevel admin
 ShowInstDetails show
 BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} ${INSTALL_TYPE} Installer - Jacob Mason"
@@ -43,27 +43,36 @@ Var JAVA_INSTALL_DESC
 !include "MUI2.nsh"
 
 !define MUI_ICON "img\FIRST_logo.ico"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "img\FIRST_Wizard.bmp"
 !define MUI_HEADERIMAGE
   !define MUI_HEADERIMAGE_BITMAP "img\FIRST_Header.bmp"
-
-!define MUI_FINISHPAGE_NOAUTOCLOSE
+!define MUI_WELCOMEFINISHPAGE_BITMAP "img\FIRST_Wizard.bmp"
 !define MUI_ABORTWARNING
 
 ;--------------------------------
 ;Pages
 
-!define MUI_WELCOMEPAGE_TITLE "Welcome to the ${PRODUCT_NAME} Setup Wizard"
+!define MUI_WELCOMEPAGE_TITLE "Welcome to the FIRST Tech Challenge Android Studio Development Suite Setup Wizard"
+!define MUI_WELCOMEPAGE_TITLE_3LINES
+!define MUI_WELCOMEPAGE_TEXT "This wizard will guide you through the installation of all the tools necessary to program your FIRST Tech Challenge Android Robot Controller with Android Studio.$\r$\n$\r$\nClick Next to continue."
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "data\LICENSE"
+
 !insertmacro MUI_PAGE_COMPONENTS
 
-!define MUI_DIRECTORYPAGE_TEXT_TOP "Choose the folder in which to install the FTC App"
-!define MUI_DIRECTORYPAGE_TEXT_DESTINATION "If you chose to install the FTC App, this is the folder in which the App will be installed. Do NOT create a new folder to store the App in. The App will create a folder called 'ftc_app' in which the application will be installed."
+!insertmacro MUI_PAGE_LICENSE "data\LICENSE"
+
+!define MUI_PAGE_HEADER_TEXT "Choose FIRST Tech Challenge App Location"
+!define MUI_PAGE_HEADER_SUBTEXT "Choose the folder in which to place the FIRST Tech Challenge Robot Controller App"
+!define MUI_DIRECTORYPAGE_TEXT_TOP "If you chose to include the FIRST Tech Challenge Robot Controller App, this is the folder in which the App will be installed. This installer will create a folder called 'ftc_app' in the location selected below and place the source code inside."
+!define MUI_DIRECTORYPAGE_TEXT_DESTINATION "Choose the folder in which to place the FIRST Tech Challange App"
 !insertmacro MUI_PAGE_DIRECTORY
+
+!define MUI_PAGE_HEADER_SUBTEXT "Please wait while the FIRST Tech Challenge Android Development Suite is being installed."
 !insertmacro MUI_PAGE_INSTFILES
 
 !define MUI_FINISHPAGE_TITLE "${PRODUCT_NAME} Installation Complete"
+!define MUI_FINISHPAGE_TEXT "The components you have selected have been installed on your computer.$\r$\n$\r$\nClick Finish to close this installer."
+!define MUI_FINISHPAGE_RUN "$PROGRAMFILES\Android\Android Studio\bin\studio.exe"
+!define MUI_FINISHPAGE_RUN_TEXT "Launch Android Studio"
 !define MUI_FINISHPAGE_LINK "Visit me online"
 !define MUI_FINISHPAGE_LINK_LOCATION http://www.jacobmason.net/
 !insertmacro MUI_PAGE_FINISH
@@ -74,7 +83,7 @@ Var JAVA_INSTALL_DESC
 ;Installer Sections
 
 
-!insertmacro "FTC.sections"
+!insertmacro "FIRSTDevSuite.sections"
 
 
 ;--------------------------------
@@ -105,7 +114,6 @@ Function .onInit
     SectionSetFlags ${JavaSDK} ${SF_RO}
     StrCpy $JAVA_INSTALL_DESC "You already have a JDK installed"
   ${EndIf}
-
 FunctionEnd
 
 ;--------------------------------
@@ -116,10 +124,10 @@ LangString DESC_JavaSDK ${LANG_ENGLISH} $JAVA_INSTALL_DESC
 LangString DESC_AndroidStudio ${LANG_ENGLISH} "Installs Android Studio 1.5.1"
 LangString DESC_AndroidSDK ${LANG_ENGLISH} "Installs the proper SDK and API tools. You probably need this."
 !if ${INSTALL_TYPE} == "Full"
-  LangString DESC_FTCapp ${LANG_ENGLISH} "Installs a copy of the FTC App"
+  LangString DESC_FTCapp ${LANG_ENGLISH} "Installs a copy of the FIRST Tech Challenge App"
 !endif
 !if ${INSTALL_TYPE} == "Net"
-  LangString DESC_FTCapp ${LANG_ENGLISH} "Downloads the latest stable FTC App from GitHub"
+  LangString DESC_FTCapp ${LANG_ENGLISH} "Downloads the latest stable FIRST Tech Challenge App from GitHub"
 !endif
 
 ;Assign language strings to sections

@@ -1,4 +1,4 @@
-!macro FTC.sections
+!macro FIRSTDevSuite.sections
 Section "Java 7 SDK" JavaSDK
   AddSize 144000
   SetOutPath "$TEMP"
@@ -47,7 +47,7 @@ SectionEnd
 
 
 
-Section "FTC App" FTCapp
+Section "FIRST Tech Challenge App" FTCapp
   AddSize 71700
   SetOutPath "$INSTDIR"
   File /r "data\ftc_app"

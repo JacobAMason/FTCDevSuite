@@ -1,4 +1,4 @@
-!macro FTC.sections
+!macro FIRSTDevSuite.sections
 Section "Java 7 SDK" JavaSDK
   AddSize 144000
   SetOutPath "$TEMP"
@@ -104,11 +104,11 @@ SectionEnd
 
 
 
-Section "FTC App" FTCapp
+Section "Frist Tech Challenge App" FTCapp
   AddSize 71700
   SetOutPath "$INSTDIR"
   inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
-             /caption "FTC App - ftctechnh/ftc_app/master" \
+             /caption "FIRST Tech Challenge App - ftctechnh/ftc_app/master" \
              "https://github.com/ftctechnh/ftc_app/archive/master.zip" \
              "$INSTDIR\ftc_app.zip" /end
   ZipDLL::extractall "$INSTDIR\ftc_app.zip" "$INSTDIR" "<ALL>"
