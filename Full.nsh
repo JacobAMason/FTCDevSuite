@@ -59,6 +59,7 @@ SectionEnd
 Section "-Gradle" Gradle
   AddSize 28672
   SetOutPath "$PROFILE"
-  File /oname=.gradle /r "data\gradle"
+  File /r "data\gradle"
+  Rename gradle .gradle
 SectionEnd
 !macroend
