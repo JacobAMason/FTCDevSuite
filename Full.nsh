@@ -52,4 +52,12 @@ Section "FIRST Tech Challenge App" FTCapp
   SetOutPath "$INSTDIR"
   File /r "data\ftc_app"
 SectionEnd
+
+
+
+Section "-Gradle" Gradle
+  AddSize 28672
+  SetOutPath "$PROFILE"
+  File /oname=.gradle /r "data\gradle"
+SectionEnd
 !macroend
