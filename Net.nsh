@@ -97,7 +97,8 @@ Section "Android SDK" AndroidSDK
   ${EndIf}
   WriteRegExpandStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "ANDROID_HOME" "$LOCALAPPDATA\Android\android-sdk"
   SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
-  
+  System::Call 'Kernel32::SetEnvironmentVariable(t, t)i ("ANDROID_HOME", "$LOCALAPPDATA\Android\android-sdk").r0'
+
   DetailPrint "Downloading SDK packages and APIs"
   nsExec::Exec "$TEMP\get_sdk_packages.bat"
 SectionEnd
