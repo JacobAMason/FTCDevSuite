@@ -86,6 +86,14 @@ Var JAVA_INSTALL_DESC
 !insertmacro "FIRSTDevSuite.sections"
 
 
+Section "-Android Studio auto open ftc_app" AutoOpenApp
+  ${If} ${SectionIsSelected} ${AndroidStudio}
+  ${AndIf} ${SectionIsSelected} ${FTCapp}
+    SetOutPath "$PROFILE\.AndroidStudio1.5\config\options"
+    File "data\recentProjects.xml"
+  ${EndIf}
+SectionEnd
+
 ;--------------------------------
 ;Initialize
 
@@ -137,3 +145,4 @@ LangString DESC_AndroidSDK ${LANG_ENGLISH} "Installs the proper SDK and API tool
   !insertmacro MUI_DESCRIPTION_TEXT ${AndroidSDK} $(DESC_AndroidSDK)
   !insertmacro MUI_DESCRIPTION_TEXT ${FTCapp} $(DESC_FTCapp)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
+
