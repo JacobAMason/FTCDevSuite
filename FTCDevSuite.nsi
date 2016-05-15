@@ -83,17 +83,7 @@ Var JAVA_INSTALL_DESC
 ;--------------------------------
 ;Installer Sections
 
-
 !insertmacro "FIRSTDevSuite.sections"
-
-
-Section "-Android Studio auto open ftc_app" AutoOpenApp
-  ${If} ${SectionIsSelected} ${AndroidStudio}
-  ${AndIf} ${SectionIsSelected} ${FTCapp}
-    SetOutPath "$PROFILE\.AndroidStudio1.5\config\options"
-    File "data\recentProjects.xml"
-  ${EndIf}
-SectionEnd
 
 ;--------------------------------
 ;Initialize
