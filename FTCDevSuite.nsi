@@ -71,8 +71,9 @@ Var JAVA_INSTALL_DESC
 
 !define MUI_FINISHPAGE_TITLE "${PRODUCT_NAME} Installation Complete"
 !define MUI_FINISHPAGE_TEXT "The components you have selected have been installed on your computer.$\r$\n$\r$\nClick Finish to close this installer."
-!define MUI_FINISHPAGE_RUN "$PROGRAMFILES\Android\Android Studio\bin\studio.exe"
+!define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_TEXT "Launch Android Studio"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchAndroidStudio"
 !define MUI_FINISHPAGE_LINK "Visit me online"
 !define MUI_FINISHPAGE_LINK_LOCATION http://www.jacobmason.net/
 !insertmacro MUI_PAGE_FINISH
@@ -121,6 +122,16 @@ Function .onInit
   ${Else}    
     SectionSetFlags ${JavaSDK} ${SF_RO}
     StrCpy $JAVA_INSTALL_DESC "You already have a JDK installed"
+  ${EndIf}
+FunctionEnd
+
+;--------------------------------
+;Launch Android Studio
+Function LaunchAndroidStudio
+  ${If} ${RunningX64}
+    Exec "$PROGRAMFILES64\Android\Android Studio\bin\studio64.exe"
+  ${Else}
+    Exec "$PROGRAMFILES\Android\Android Studio\bin\studio.exe"
   ${EndIf}
 FunctionEnd
 
