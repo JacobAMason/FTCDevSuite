@@ -1,4 +1,4 @@
-$VERSION = "1.0.0"
+$VERSION = Get-Content VERSION
 $ErrorActionPreference = "Stop"
 
 function Write-Color([String[]]$Text, [ConsoleColor[]]$Color) {
