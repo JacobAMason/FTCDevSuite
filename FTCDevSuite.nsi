@@ -1,6 +1,7 @@
 !define PRODUCT_NAME "FIRST Android Development Suite"
 !include "x64.nsh"
 !include "WordFunc.nsh"
+!include "Sections.nsh"
 !ifndef INSTALL_TYPE
   !error "You must define the INSTALL_TYPE as either Full or Net"
 !endif
@@ -107,11 +108,26 @@ Function .onInit
 
   ${VersionCompare} $JDK_VERSION "1.7" $0
   ${If} $0 == "2"
-    SectionSetFlags ${JavaSDK} ${SF_SELECTED}
+    !insertmacro SetSectionFlag ${JavaSDK} ${SF_SELECTED}
     StrCpy $JAVA_INSTALL_DESC "Installs Java Development Kit 1.7.80"
   ${Else}    
-    SectionSetFlags ${JavaSDK} ${SF_RO}
+    !insertmacro SetSectionFlag ${JavaSDK} ${SF_RO}
     StrCpy $JAVA_INSTALL_DESC "You already have a JDK installed"
+  ${EndIf}
+FunctionEnd
+
+;--------------------------------
+;Section Dependency Management
+Function .onSelChange
+  ${If} ${SectionIsSelected} ${AndroidSDK}
+  ${AndIf} ${INSTALL_TYPE} == "Net"
+    !insertmacro SetSectionFlag ${JavaSDK} ${SF_SELECTED}
+    !insertmacro SetSectionFlag ${JavaSDK} ${SF_RO}
+  ${EndIf}
+
+  ${IfNot} ${SectionIsSelected} ${AndroidSDK}
+  ${AndIf} ${INSTALL_TYPE} == "Net"
+    !insertmacro ClearSectionFlag ${JavaSDK} ${SF_RO}
   ${EndIf}
 FunctionEnd
 
