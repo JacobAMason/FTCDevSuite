@@ -111,7 +111,7 @@ SectionEnd
 
 
 
-Section "Frist Tech Challenge App" FTCapp
+Section "FIRST Tech Challenge App" FTCapp
   AddSize 71700
   SetOutPath "$INSTDIR"
   inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
