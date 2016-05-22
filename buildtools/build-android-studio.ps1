@@ -22,7 +22,7 @@ Try {
     Write-Color -Text "Checking Dependencies" -Color "magenta"
 
     echo ""
-    $localfile = "data\jdk-7u80-windows-i586.exe"
+    $localfile = "..\data\jdk-7u80-windows-i586.exe"
     if (!(Test-Path $localfile)) {
         Write-Color -Text "Couldn't find Java 7 SDK x86. Downloading it now: please wait." -Color "yellow"
         $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie") 
@@ -41,7 +41,7 @@ Try {
     }
 
     echo ""
-    $localfile = "data\jdk-7u80-windows-x64.exe"
+    $localfile = "..\data\jdk-7u80-windows-x64.exe"
     if (!(Test-Path $localfile)) {
         Write-Color -Text "Couldn't find Java 7 SDK x64. Downloading it now: please wait." -Color "yellow"
         $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie") 
@@ -60,7 +60,7 @@ Try {
     }
 
     echo ""
-    $localfile = "data\android-studio-ide-141.2456560-windows.exe"
+    $localfile = "..\data\android-studio-ide-141.2456560-windows.exe"
     if (!(Test-Path $localfile)) {
         Write-Color -Text "Couldn't find Android Studio. Downloading it now: please wait." -Color "yellow"
         $client.DownloadFile("http://dl.google.com/dl/android/studio/install/1.5.1.0/android-studio-ide-141.2456560-windows.exe", $localfile)
@@ -78,7 +78,7 @@ Try {
     }
 
     echo ""
-    $localfile = "data\installer_r24.4.1-windows.exe"
+    $localfile = "..\data\installer_r24.4.1-windows.exe"
     if (!(Test-Path $localfile)) {
         Write-Color -Text "Couldn't find Android SDK Executable. Downloading it now: please wait." -Color "yellow"
         $client.DownloadFile("http://dl.google.com/android/installer_r24.4.1-windows.exe", $localfile)
@@ -96,7 +96,7 @@ Try {
     }
 
     echo ""
-    $localfile = "data\android-sdk_r24.4.1-windows.zip"
+    $localfile = "..\data\android-sdk_r24.4.1-windows.zip"
     if (!(Test-Path $localfile)) {
         Write-Color -Text "Couldn't find Android SDK Zip. Downloading it now: please wait." -Color "yellow"
         $client.DownloadFile("http://dl.google.com/android/android-sdk_r24.4.1-windows.zip", $localfile)
@@ -113,20 +113,20 @@ Try {
         bellExit
     }
 
-    $localfile = "data\android-sdk\tools\android.bat"
+    $localfile = "..\data\android-sdk\tools\android.bat"
     if (!(Test-Path $localfile)) {
         Write-Color -Text "Not sure if the zip is extracted. Doing that now..." -Color "yellow"
         $shellApplication = new-object -com shell.application
-        $zipPackage = $shellApplication.NameSpace((Get-Location).Path + "\data\android-sdk_r24.4.1-windows.zip")
-        $destinationFolder = $shellApplication.NameSpace((Get-Location).Path + "\data\")
+        $zipPackage = $shellApplication.NameSpace((Get-Location).Path + "\..\data\android-sdk_r24.4.1-windows.zip")
+        $destinationFolder = $shellApplication.NameSpace((Get-Location).Path + "\..\data\")
         $destinationFolder.CopyHere($zipPackage.items(), 20)
-        Rename-Item "$((Get-Location).Path)\data\android-sdk-windows" "android-sdk"
+        Rename-Item "$((Get-Location).Path)\..\data\android-sdk-windows" "android-sdk"
     } else {
         Write-Color -Text "Zip appears to have already been extracted" -Color "green"
     }
 
     echo ""
-    $localfile = "data\ftc_app.zip"
+    $localfile = "..\data\ftc_app.zip"
     if (!(Test-Path $localfile)) {
         Write-Color -Text "Couldn't find FTC App. Downloading it now: please wait." -Color "yellow"
         $client.DownloadFile("https://github.com/ftctechnh/ftc_app/archive/master.zip", $localfile)
@@ -134,35 +134,35 @@ Try {
         Write-Color -Text "FTC App found" -Color "green"
     }
     
-    $localfile = "data\ftc_app\FtcRobotController\src\main\java\com\qualcomm\ftcrobotcontroller\"
+    $localfile = "..\data\ftc_app\FtcRobotController\src\main\java\com\qualcomm\ftcrobotcontroller\"
     if (!(Test-Path $localfile)) {
         Write-Color -Text "Not sure if the zip is extracted. Doing that now..." -Color "yellow"
         $shellApplication = new-object -com shell.application
-        $zipPackage = $shellApplication.NameSpace((Get-Location).Path + "\data\ftc_app.zip")
-        $destinationFolder = $shellApplication.NameSpace((Get-Location).Path + "\data\")
+        $zipPackage = $shellApplication.NameSpace((Get-Location).Path + "\..\data\ftc_app.zip")
+        $destinationFolder = $shellApplication.NameSpace((Get-Location).Path + "\..\data\")
         $destinationFolder.CopyHere($zipPackage.items(), 20)
-        Rename-Item "$((Get-Location).Path)\data\ftc_app-master" "ftc_app"
+        Rename-Item "$((Get-Location).Path)\..\data\ftc_app-master" "ftc_app"
     } else {
         Write-Color -Text "Zip appears to have already been extracted" -Color "green"
     }
 
     echo ""
     Write-Color -Text "Checking SDK Tools and APIs" -Color "magenta"
-    if (!(Test-Path "data\android-sdk\build-tools\21.1.2\")) {
+    if (!(Test-Path "..\data\android-sdk\build-tools\21.1.2\")) {
         Write-Color -Text "Downloading build-tools-21.1.2 ..." -Color "yellow"
-        echo y | & ".\data\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "build-tools-21.1.2" | out-null
+        echo y | & ".\..\data\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "build-tools-21.1.2" | out-null
     }
-    if (!(Test-Path "data\android-sdk\extras\google\usb_driver\")) {
+    if (!(Test-Path "..\data\android-sdk\extras\google\usb_driver\")) {
         Write-Color -Text "Downloading extra-google-usb_driver ..." -Color "yellow"
-        echo y | & ".\data\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "extra-google-usb_driver" | out-null
+        echo y | & ".\..\data\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "extra-google-usb_driver" | out-null
     }
-    if (!(Test-Path "data\android-sdk\platforms\android-19\")) {
+    if (!(Test-Path "..\data\android-sdk\platforms\android-19\")) {
         Write-Color -Text "Downloading android-19 ..." -Color "yellow"
-        echo y | & ".\data\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "android-19" | out-null
+        echo y | & ".\..\data\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "android-19" | out-null
     }
-    if (!(Test-Path "data\android-sdk\platform-tools\api")) {
+    if (!(Test-Path "..\data\android-sdk\platform-tools\api")) {
         Write-Color -Text "Downloading platform-tools ..." -Color "yellow"
-        echo y | & ".\data\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "platform-tools" | out-null
+        echo y | & ".\..\data\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "platform-tools" | out-null
     }
     Write-Color -Text "All SDK and API dependencies present and accounted for" -Color "green"
 
@@ -170,11 +170,11 @@ Try {
 
     echo ""
     Write-Color -Text "Building Net installer" -Color "magenta"
-    & "./buildtools/makensis.exe" /DINSTALL_TYPE=Net /DPRODUCT_VERSION=$VERSION /V2 FTCDevSuite.nsi
+    & ".\..\buildtools\NSIS\makensis.exe" /DINSTALL_TYPE=Net /DPRODUCT_VERSION=$VERSION /V2 AndroidStudioDevSuite.nsi
 
     echo ""
     Write-Color -Text "Building Full installer (takes ~10m)" -Color "magenta"
-    & "./buildtools/makensis.exe" /DINSTALL_TYPE=Full /DPRODUCT_VERSION=$VERSION /V2 FTCDevSuite.nsi
+    & ".\..\buildtools\NSIS\makensis.exe" /DINSTALL_TYPE=Full /DPRODUCT_VERSION=$VERSION /V2 AndroidStudioDevSuite.nsi
 
     echo ""
     $time= Get-Date

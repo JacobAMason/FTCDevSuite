@@ -12,7 +12,7 @@
 !endif
 !endif
 
-!include "${INSTALL_TYPE}.nsh"
+!addincludedir ..\common-NSIS
 
 SetCompressor /FINAL /SOLID lzma
 
@@ -43,10 +43,10 @@ Var JAVA_INSTALL_DESC
 
 !include "MUI2.nsh"
 
-!define MUI_ICON "img\FIRST_logo.ico"
+!define MUI_ICON "..\img\FIRST_logo.ico"
 !define MUI_HEADERIMAGE
-  !define MUI_HEADERIMAGE_BITMAP "img\FIRST_Header.bmp"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "img\FIRST_Wizard.bmp"
+  !define MUI_HEADERIMAGE_BITMAP "..\img\FIRST_Header.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "..\img\FIRST_Wizard.bmp"
 !define MUI_ABORTWARNING
 
 ;--------------------------------
@@ -59,7 +59,7 @@ Var JAVA_INSTALL_DESC
 
 !insertmacro MUI_PAGE_COMPONENTS
 
-!insertmacro MUI_PAGE_LICENSE "data\LICENSE"
+!insertmacro MUI_PAGE_LICENSE "..\data\LICENSE"
 
 !define MUI_PAGE_HEADER_TEXT "Choose FIRST Tech Challenge App Location"
 !define MUI_PAGE_HEADER_SUBTEXT "Choose the folder in which to place the FIRST Tech Challenge Robot Controller App"
@@ -84,7 +84,14 @@ Var JAVA_INSTALL_DESC
 ;--------------------------------
 ;Installer Sections
 
-!insertmacro "FIRSTDevSuite.sections"
+!include JavaSDK.7u80.${INSTALL_TYPE}.nsh
+!include AndroidStudio.1.${INSTALL_TYPE}.nsh
+!include AndroidSDK.${INSTALL_TYPE}.nsh
+!include FTCapp.${INSTALL_TYPE}.nsh
+
+!if ${INSTALL_TYPE} == "Full"
+  !include Gradle.nsh
+!endif
 
 ;--------------------------------
 ;Initialize

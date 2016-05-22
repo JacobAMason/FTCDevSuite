@@ -5,4 +5,5 @@ if %ERRORLEVEL% NEQ 0 (
     echo Make sure Java is in your path: https://java.com/en/download/help/path.xml
     exit /b
 )
-powershell -executionpolicy bypass -File buildtools/build.ps1
+powershell -executionpolicy bypass -File ../buildtools/build-android-studio.ps1
+
