@@ -45,6 +45,16 @@ $localfile = "appengine-java-sdk-1.9.27.zip"
 download-file "Google App Engine SDK for Java Zip" $localfile "https://storage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-1.9.27.zip"
 check-hash $sha1 $localfile "AD-60-0E-42-8B-36-EE-57-50-C3-BC-FB-D1-1B-D1-E5-87-39-39-4E" "Google App Engine SDK for Java Zip"
 
+$localfile = "appengine-java-sdk-1.9.27\bin\dev_appserver.cmd"
+if (!(Test-Path $localfile)) {
+    Write-Color -Text "Not sure if the zip is extracted. Doing that now..." -Color "yellow"
+    $shellApplication = new-object -com shell.application
+    $zipPackage = $shellApplication.NameSpace((Get-Location).Path + "\appengine-java-sdk-1.9.27.zip")
+    $destinationFolder = $shellApplication.NameSpace((Get-Location).Path)
+    $destinationFolder.CopyHere($zipPackage.items(), 20)
+} else {
+    Write-Color -Text "Zip appears to have already been extracted" -Color "green"
+}
 
 echo ""
 $localfile = "python-2.7.11.msi"
