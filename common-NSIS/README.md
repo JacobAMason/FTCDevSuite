@@ -1,2 +1,2 @@
-This folder contains common NSIS Sections that both installers use.
+This folder contains NSIS Sections for the installers.
 
