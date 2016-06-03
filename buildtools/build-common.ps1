@@ -2,12 +2,14 @@ $ErrorActionPreference = "Stop"
 
 ."..\buildtools\functions.ps1"
 
+Set-Location -literalPath "..\data"
+
 echo ""
 $localfile = "jdk-7u80-windows-i586.exe"
 if (!(Test-Path $localfile)) {
     Write-Color -Text "Couldn't find Java 7 SDK x86. Downloading it now: please wait." -Color "yellow"
     $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie") 
-    $client.DownloadFile("http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-windows-i586.exe", $localfile)
+    $client.DownloadFile("http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-windows-i586.exe", (Get-Location).Path + "\" + $localfile)
 } else {
     Write-Color -Text "Java 7 SDK x86 found" -Color "green"
 }
@@ -18,7 +20,7 @@ $localfile = "jdk-7u80-windows-x64.exe"
 if (!(Test-Path $localfile)) {
     Write-Color -Text "Couldn't find Java 7 SDK x64. Downloading it now: please wait." -Color "yellow"
     $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie") 
-    $client.DownloadFile("http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-windows-x64.exe", $localfile)
+    $client.DownloadFile("http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-windows-x64.exe", (Get-Location).Path + "\" + $localfile)
 } else {
     Write-Color -Text "Java 7 SDK x64 found" -Color "green"
 }

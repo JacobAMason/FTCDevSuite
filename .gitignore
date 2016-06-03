@@ -1,3 +1,7 @@
-*.exe
+Android-Studio/*.exe
+App-Inventor/*.exe
 *.zip
 
+/data/android-sdk
+/data/ftc_app*
+/data/*.exe
