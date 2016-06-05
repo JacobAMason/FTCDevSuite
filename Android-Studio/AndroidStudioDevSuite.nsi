@@ -2,6 +2,7 @@
 !include "x64.nsh"
 !include "WordFunc.nsh"
 !include "Sections.nsh"
+!include "psExec.nsh"
 !ifndef INSTALL_TYPE
   !error "You must define the INSTALL_TYPE as either Full or Net"
 !endif
