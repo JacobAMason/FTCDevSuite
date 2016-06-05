@@ -1,3 +1,4 @@
+*.swp
 Android-Studio/*.exe
 App-Inventor/*.exe
 *.zip
