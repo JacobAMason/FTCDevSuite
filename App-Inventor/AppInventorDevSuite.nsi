@@ -2,6 +2,7 @@
 !include "x64.nsh"
 !include "WordFunc.nsh"
 !include "Sections.nsh"
+!include "psExec.nsh"
 !ifndef INSTALL_TYPE
   !error "You must define the INSTALL_TYPE as either Full or Net"
 !endif
@@ -23,10 +24,6 @@ Caption "App Inventor Dev Suite ${PRODUCT_VERSION}"
 ;The file to write
 OutFile "FIRSTAppInventor.${INSTALL_TYPE}.${PRODUCT_VERSION}.exe"
 
-;The default installation directory
-InstallDir $DOCUMENTS
-;Get installation folder from registry if available
-InstallDirRegKey HKCU "Software\FIRST App Inventor Development Suite" ""
 RequestExecutionLevel admin
 ShowInstDetails show
 BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} ${INSTALL_TYPE} Installer - Jacob Mason"
