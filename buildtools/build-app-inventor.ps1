@@ -85,12 +85,12 @@ if (!(Test-Path $localfile)) {
 echo ""
 $localfile = "ChromeStandaloneSetup.exe"
 download-file "Google Chrome x32" $localfile "https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={C0A06FB4-6D0E-7BD9-D1F2-B4B227EB6A0B}&lang=en&browser=4&usagestats=0&appname=Google%20Chrome&needsadmin=true/update2/installers/ChromeStandaloneSetup.exe"
-check-hash $md5 $localfile "31-04-1E-9B-B3-80-2C-B2-9A-6B-18-AF-07-67-1C-61" "Google Chrome x32"
+check-hash $md5 $localfile "A3-E6-05-C2-3C-F0-01-93-6F-28-EA-58-D0-FD-39-10" "Google Chrome x32"
 
 echo ""
 $localfile = "ChromeStandaloneSetup64.exe"
 download-file "Google Chrome x64" $localfile "https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={C0A06FB4-6D0E-7BD9-D1F2-B4B227EB6A0B}&lang=en&browser=4&usagestats=0&appname=Google%20Chrome&needsadmin=true&ap=x64-stable/update2/installers/ChromeStandaloneSetup64.exe"
-check-hash $md5 $localfile "42-20-F8-F7-9A-1D-E9-3D-B2-9E-A0-2A-02-1D-B0-2A" "Google Chrome x64"
+check-hash $md5 $localfile "A4-B5-3E-B7-A1-90-4A-6E-BA-F0-3C-6F-09-C1-FA-09" "Google Chrome x64"
 
 echo ""
 $localfile = "appinventor-sources.zip"

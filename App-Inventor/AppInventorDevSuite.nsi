@@ -76,6 +76,7 @@ Var JAVA_INSTALL_DESC
 ;Installer Sections
 
 !include JavaSDK.7u80.${INSTALL_TYPE}.nsh
+!include GoogleChrome.${INSTALL_TYPE}.nsh
 !include AndroidSDK.${INSTALL_TYPE}.nsh
 !include Ant.${INSTALL_TYPE}.nsh
 !include AppEngine.${INSTALL_TYPE}.nsh
@@ -144,6 +145,7 @@ FunctionEnd
 
 ;Language strings
 LangString DESC_JavaSDK ${LANG_ENGLISH} $JAVA_INSTALL_DESC
+LangString DESC_Chrome ${LANG_ENGLISH} "Installs Google Chrome"
 LangString DESC_AndroidSDK ${LANG_ENGLISH} "Installs the proper SDK and API tools. You probably need this."
 LangString DESC_Ant ${LANG_ENGLISH} "Installs Ant"
 LangString DESC_AppEngine ${LANG_ENGLISH} "Installs Google App Engine for Java 1.9.27"
@@ -155,6 +157,7 @@ LangString DESC_AppInventor ${LANG_ENGLISH} "Installs MIT App Inventor"
 ;Assign language strings to sections
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${JavaSDK} $(DESC_JavaSDK)
+  !insertmacro MUI_DESCRIPTION_TEXT ${Chrome} $(DESC_Chrome)
   !insertmacro MUI_DESCRIPTION_TEXT ${AndroidSDK} $(DESC_AndroidSDK)
   !insertmacro MUI_DESCRIPTION_TEXT ${Ant} $(DESC_Ant)
   !insertmacro MUI_DESCRIPTION_TEXT ${AppEngine} $(DESC_AppEngine)
