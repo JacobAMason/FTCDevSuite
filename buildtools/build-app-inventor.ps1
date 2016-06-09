@@ -6,9 +6,6 @@ Set-Location -literalPath "..\data"
 ."..\buildtools\functions.ps1"
 
 Try {
-$client = New-Object System.Net.WebClient
-$md5 = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
-$sha1 = New-Object System.Security.Cryptography.SHA1CryptoServiceProvider 
 
 Write-Color -Text "Checking Dependencies" -Color "magenta"
 
@@ -91,6 +88,16 @@ echo ""
 $localfile = "ChromeStandaloneSetup64.exe"
 download-file "Google Chrome x64" $localfile "https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={C0A06FB4-6D0E-7BD9-D1F2-B4B227EB6A0B}&lang=en&browser=4&usagestats=0&appname=Google%20Chrome&needsadmin=true&ap=x64-stable/update2/installers/ChromeStandaloneSetup64.exe"
 check-hash $md5 $localfile "A4-B5-3E-B7-A1-90-4A-6E-BA-F0-3C-6F-09-C1-FA-09" "Google Chrome x64"
+
+echo ""
+$localfile = "Firefox Setup 47.0.exe"
+download-file "Firefox 47 x32" $localfile "https://ftp.mozilla.org/pub/firefox/releases/47.0/win32/en-US/Firefox%20Setup%2047.0.exe"
+check-hash $sha512 $localfile "50-74-19-d4-fb-79-2e-a3-69-54-58-6c-42-b8-76-d6-c6-c6-0d-c0-ef-4b-60-56-15-05-78-ca-49-4c-e8-81-58-fc-7f-c5-ba-10-13-b5-37-8f-7a-c9-56-0c-bb-7c-34-c7-3f-6d-bc-ea-51-aa-2e-61-ce-d6-4a-75-f9-81" "Firefox 47 x32"
+
+echo ""
+$localfile = "Firefox Setup 47.0 x64.exe"
+download-file "Firefox 47 x64" $localfile "https://ftp.mozilla.org/pub/firefox/releases/47.0/win64/en-US/Firefox%20Setup%2047.0.exe"
+check-hash $sha512 $localfile "d7-0f-c9-7d-66-bf-4f-cc-8b-77-b7-15-11-b5-e6-ae-2e-0b-30-9c-9c-53-f6-d1-46-a3-42-0b-e0-0f-e8-fb-c3-18-84-f5-4a-ed-94-dc-d3-cb-b7-de-a2-f8-6b-e1-94-7b-9d-83-90-b9-0b-de-2c-2d-1e-a0-b3-02-8d-28" "Firefox 47 x64"
 
 echo ""
 $localfile = "appinventor-sources.zip"

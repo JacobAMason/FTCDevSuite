@@ -76,7 +76,7 @@ Var JAVA_INSTALL_DESC
 ;Installer Sections
 
 !include JavaSDK.7u80.${INSTALL_TYPE}.nsh
-!include GoogleChrome.${INSTALL_TYPE}.nsh
+!include Firefox.${INSTALL_TYPE}.nsh
 !include AndroidSDK.${INSTALL_TYPE}.nsh
 !include Ant.${INSTALL_TYPE}.nsh
 !include AppEngine.${INSTALL_TYPE}.nsh
@@ -88,8 +88,8 @@ Var JAVA_INSTALL_DESC
 ;--------------------------------
 ;Initialize
 
-; Check Java Version
 Function .onInit
+  ; Check Java Version
   ${If} ${RunningX64}
     SetRegView 64
   ${EndIf} 
@@ -110,8 +110,25 @@ Function .onInit
     !insertmacro SetSectionFlag ${JavaSDK} ${SF_SELECTED}
     StrCpy $JAVA_INSTALL_DESC "Installs Java Development Kit 1.7.80"
   ${Else}    
+    !insertmacro ClearSectionFlag ${JavaSDK} ${SF_SELECTED}
     !insertmacro SetSectionFlag ${JavaSDK} ${SF_RO}
     StrCpy $JAVA_INSTALL_DESC "You already have a JDK installed"
+  ${EndIf}
+
+  ; Check for Chrome and Firefox. If Chrome exists, deselect Firefox. If Firefox exists, disable it in the installer.
+  ClearErrors
+  ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe" "Path"
+  ${If} $0 != ""
+    MessageBox MB_OK "Found Chrome: $0"
+    !insertmacro ClearSectionFlag ${Firefox} ${SF_SELECTED}
+  ${EndIf}
+
+  ClearErrors
+  ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\firefox.exe" "Path"
+  ${If} $0 != ""
+    MessageBox MB_OK "Found Firefox: $0"
+    !insertmacro ClearSectionFlag ${Firefox} ${SF_SELECTED}
+    !insertmacro SetSectionFlag ${Firefox} ${SF_RO}
   ${EndIf}
 FunctionEnd
 
@@ -145,7 +162,7 @@ FunctionEnd
 
 ;Language strings
 LangString DESC_JavaSDK ${LANG_ENGLISH} $JAVA_INSTALL_DESC
-LangString DESC_Chrome ${LANG_ENGLISH} "Installs Google Chrome"
+LangString DESC_Firefox ${LANG_ENGLISH} "Installs Firefox 47.0"
 LangString DESC_AndroidSDK ${LANG_ENGLISH} "Installs the proper SDK and API tools. You probably need this."
 LangString DESC_Ant ${LANG_ENGLISH} "Installs Ant"
 LangString DESC_AppEngine ${LANG_ENGLISH} "Installs Google App Engine for Java 1.9.27"
@@ -157,7 +174,7 @@ LangString DESC_AppInventor ${LANG_ENGLISH} "Installs MIT App Inventor"
 ;Assign language strings to sections
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${JavaSDK} $(DESC_JavaSDK)
-  !insertmacro MUI_DESCRIPTION_TEXT ${Chrome} $(DESC_Chrome)
+  !insertmacro MUI_DESCRIPTION_TEXT ${Firefox} $(DESC_Firefox)
   !insertmacro MUI_DESCRIPTION_TEXT ${AndroidSDK} $(DESC_AndroidSDK)
   !insertmacro MUI_DESCRIPTION_TEXT ${Ant} $(DESC_Ant)
   !insertmacro MUI_DESCRIPTION_TEXT ${AppEngine} $(DESC_AppEngine)

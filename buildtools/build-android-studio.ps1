@@ -6,9 +6,6 @@ Set-Location -literalPath "..\data"
 ."..\buildtools\functions.ps1"
 
 Try {
-$client = New-Object System.Net.WebClient
-$md5 = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
-$sha1 = New-Object System.Security.Cryptography.SHA1CryptoServiceProvider 
 
 Write-Color -Text "Checking Dependencies" -Color "magenta"
 
