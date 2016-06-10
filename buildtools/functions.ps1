@@ -12,8 +12,8 @@ function bellExit {
     Exit
 }
 
+$client = New-Object System.Net.WebClient
 function download-file ($title, $localfile, $url) {
-    $client = New-Object System.Net.WebClient
     if (!(Test-Path $localfile)) {
         Write-Color -Text "Couldn't find $title. Downloading it now: please wait." -Color "yellow"
         $client.DownloadFile($url, (Get-Location).Path + "\" + $localfile)
