@@ -78,7 +78,6 @@ Var JAVA_INSTALL_DESC
 !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchAndroidStudio"
 !define MUI_FINISHPAGE_LINK "Visit me online"
 !define MUI_FINISHPAGE_LINK_LOCATION http://www.jacobmason.net/
-!define MUI_FINISHPAGE_NOAUTOCLOSE
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_LANGUAGE "English"
