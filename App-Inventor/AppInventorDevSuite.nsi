@@ -150,11 +150,7 @@ FunctionEnd
 ;--------------------------------
 ;Launch App Inventor
 Function LaunchAppInventor
-  ${If} ${RunningX64}
-    Exec "$PROGRAMFILES64\Android\Android Studio\bin\studio64.exe"
-  ${Else}
-    Exec "$PROGRAMFILES\Android\Android Studio\bin\studio.exe"
-  ${EndIf}
+  Exec '"C:\Python27\python.exe" run_App_Inventor.py'
 FunctionEnd
 
 ;--------------------------------
