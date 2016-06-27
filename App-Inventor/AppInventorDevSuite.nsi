@@ -163,7 +163,7 @@ LangString DESC_AndroidSDK ${LANG_ENGLISH} "Installs the proper SDK and API tool
 LangString DESC_Ant ${LANG_ENGLISH} "Installs Ant"
 LangString DESC_AppEngine ${LANG_ENGLISH} "Installs Google App Engine for Java 1.9.27"
 LangString DESC_Python2 ${LANG_ENGLISH} "Installs Python 2.7.11"
-LangString DESC_PhantomJS ${LANG_ENGLISH} "Installs PhantomJS 2.1.1"
+LangString DESC_PhantomJS ${LANG_ENGLISH} "Installs PhantomJS 2.1.1$\r$\nYou only need this if you are running AppInventor's unit tests"
 LangString DESC_Git ${LANG_ENGLISH} "Installs Git 2.8.3"
 LangString DESC_AppInventor ${LANG_ENGLISH} "Installs MIT App Inventor"
 
