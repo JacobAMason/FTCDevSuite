@@ -21,8 +21,7 @@ def run_local_build_server():
     os.environ["_JAVA_OPTIONS"] = "-Xmx1024M"
     os.chdir(os.environ["USERPROFILE"] + r"\appinventor-sources\appinventor\buildserver")
     return subprocess.Popen(
-        [os.environ["ANT_HOME"] + r"\bin\ant.bat", "RunLocalBuildServer"],
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        [os.environ["ANT_HOME"] + r"\bin\ant.bat", "RunLocalBuildServer"]
         )
 
 def is_build_server_running():
@@ -38,8 +37,7 @@ def start_appinventor():
     os.chdir(os.environ["USERPROFILE"] + r"\appinventor-sources\appinventor")
     return subprocess.Popen(
         [os.environ["LOCALAPPDATA"] + r"\appengine-java-sdk-1.9.27\bin\dev_appserver.cmd",
-         "--port=8888", "--address=0.0.0.0", r"appengine\build\war"],
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE
+         "--port=8888", "--address=0.0.0.0", r"appengine\build\war"]
         )
 
 def is_app_inventor_running():
