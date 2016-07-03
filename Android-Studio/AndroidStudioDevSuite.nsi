@@ -1,4 +1,4 @@
-!define PRODUCT_NAME "FIRST Android Development Suite"
+!define PRODUCT_NAME "FIRST Android Studio Development Suite"
 !include "x64.nsh"
 !include "WordFunc.nsh"
 !include "Sections.nsh"
@@ -19,10 +19,10 @@ SetCompressor /FINAL /SOLID lzma
 
 ;--------------------------------
 Name "${PRODUCT_NAME}"
-Caption "FIRST Development Suite ${PRODUCT_VERSION}"
+Caption "Android Studio Dev Suite ${PRODUCT_VERSION}"
 
 ;The file to write
-OutFile "FIRSTDevSuite.${INSTALL_TYPE}.${PRODUCT_VERSION}.exe"
+OutFile "FIRSTAndroidStudio.${INSTALL_TYPE}.${PRODUCT_VERSION}.exe"
 
 ;The default installation directory
 InstallDir $DOCUMENTS
