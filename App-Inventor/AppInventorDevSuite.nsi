@@ -110,6 +110,7 @@ Function .onInit
   ${EndIf}
 
   !insertmacro CheckForPython
+  !insertmacro CheckForGit
 FunctionEnd
 
 ;--------------------------------
