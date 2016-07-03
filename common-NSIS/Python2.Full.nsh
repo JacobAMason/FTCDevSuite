@@ -12,3 +12,16 @@ Section "Python 2.7.11" Python2
   ${EndIf}
 SectionEnd
 
+!macro CheckForPython
+  ClearErrors
+  ReadRegStr $0 HKLM "SOFTWARE\Python\PythonCore\2.7\PythonPath" ""
+  ReadRegStr $1 HKCU "Software\Python\PythonCore\2.7\PythonPath" ""
+  ${If} $0 != ""
+  ${OrIf} $1 != ""
+    MessageBox MB_OK "Found Python 2.7: 0$0 1$1"
+    !insertmacro ClearSectionFlag ${Python2} ${SF_SELECTED}
+    !insertmacro SetSectionFlag ${Python2} ${SF_RO}
+  ${Else}
+    MessageBox MB_OK "Didn't Find Python 2.7: 0$0 1$1"
+  ${EndIf}
+!macroend

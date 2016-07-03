@@ -108,6 +108,8 @@ Function .onInit
     !insertmacro ClearSectionFlag ${Firefox} ${SF_SELECTED}
     !insertmacro SetSectionFlag ${Firefox} ${SF_RO}
   ${EndIf}
+
+  !insertmacro CheckForPython
 FunctionEnd
 
 ;--------------------------------
