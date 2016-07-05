@@ -97,14 +97,12 @@ Function .onInit
   ClearErrors
   ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe" "Path"
   ${If} $0 != ""
-    MessageBox MB_OK "Found Chrome: $0"
     !insertmacro ClearSectionFlag ${Firefox} ${SF_SELECTED}
   ${EndIf}
 
   ClearErrors
   ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\firefox.exe" "Path"
   ${If} $0 != ""
-    MessageBox MB_OK "Found Firefox: $0"
     !insertmacro ClearSectionFlag ${Firefox} ${SF_SELECTED}
     !insertmacro SetSectionFlag ${Firefox} ${SF_RO}
   ${EndIf}

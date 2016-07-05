@@ -13,12 +13,8 @@ SectionEnd
 !macro CheckForGit
   ReadEnvStr $0 "SYSTEMDRIVE"
   ClearErrors
-  IfFileExists "$0\Program Files\Git\bin\git.exe" 0 notFound
-    MessageBox MB_OK "Found Git"
+  IfFileExists "$0\Program Files\Git\bin\git.exe" 0 done
     !insertmacro ClearSectionFlag ${Git} ${SF_SELECTED}
     !insertmacro SetSectionFlag ${Git} ${SF_RO}
-  GOTO done
-  notFound:
-    MessageBox MB_OK "Didn't Find Git"
   done:
 !macroend
