@@ -3,6 +3,7 @@
 !include "WordFunc.nsh"
 !include "Sections.nsh"
 !include "psExec.nsh"
+!include "zipdll.nsh"
 !ifndef INSTALL_TYPE
   !error "You must define the INSTALL_TYPE as either Full or Net"
 !endif
@@ -87,7 +88,7 @@ Var JAVA_INSTALL_DESC
 
 !include JavaSDK.7u80.${INSTALL_TYPE}.nsh
 !include AndroidStudio.1.${INSTALL_TYPE}.nsh
-!include AndroidSDK.${INSTALL_TYPE}.nsh
+!include AndroidSDK.nsh
 !include FTCapp.${INSTALL_TYPE}.nsh
 
 !if ${INSTALL_TYPE} == "Full"
@@ -101,6 +102,7 @@ Var JAVA_INSTALL_DESC
 
 Function .onInit
   !insertmacro CheckJavaVersion
+  !insertmacro CheckForAndroidSDK
 FunctionEnd
 
 ;--------------------------------

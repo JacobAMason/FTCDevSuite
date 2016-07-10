@@ -27,6 +27,11 @@ if (!(Test-Path $localfile)) {
 check-hash $md5 $localfile "49-9B-22-4F-4D-A7-03-12-DD-D4-7C-48-24-E8-3A-DC" "Java 7 SDK x64"
 
 echo ""
+$localfile = "installer_r24.4.1-windows.exe"
+download-file "Android SDK Exe Installer" $localfile "http://dl.google.com/android/installer_r24.4.1-windows.exe"
+check-hash $sha1 $localfile "F9-B5-9D-72-41-36-49-D3-1E-63-32-07-E3-1F-45-64-43-E7-EA-0B" "Android SDK Exe Installer"
+
+echo ""
 $localfile = "android-sdk_r24.4.1-windows.zip"
 download-file "Android SDK Zip" $localfile "http://dl.google.com/android/android-sdk_r24.4.1-windows.zip"
 check-hash $sha1 $localfile "66-B6-A6-43-30-53-C1-52-B2-2B-F8-CA-B1-9C-0F-3F-EF-4E-BA-49" "Android SDK Zip"

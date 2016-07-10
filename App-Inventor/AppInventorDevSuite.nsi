@@ -3,6 +3,7 @@
 !include "WordFunc.nsh"
 !include "Sections.nsh"
 !include "psExec.nsh"
+!include "zipdll.nsh"
 !ifndef INSTALL_TYPE
   !error "You must define the INSTALL_TYPE as either Full or Net"
 !endif
@@ -77,7 +78,7 @@ Var JAVA_INSTALL_DESC
 
 !include JavaSDK.7u80.${INSTALL_TYPE}.nsh
 !include Firefox.${INSTALL_TYPE}.nsh
-!include AndroidSDK.${INSTALL_TYPE}.nsh
+!include AndroidSDK.nsh
 !include Ant.${INSTALL_TYPE}.nsh
 !include AppEngine.${INSTALL_TYPE}.nsh
 !include Python2.${INSTALL_TYPE}.nsh
@@ -109,6 +110,7 @@ Function .onInit
 
   !insertmacro CheckForPython
   !insertmacro CheckForGit
+  !insertmacro CheckForAndroidSDK
 FunctionEnd
 
 ;--------------------------------
