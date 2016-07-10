@@ -35,6 +35,7 @@ BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} ${INSTALL_TYPE} Installer - Jac
 Var JDK_VERSION
 Var JDK_HOME
 Var JAVA_INSTALL_DESC
+Var PYTHON_PATH
 
 ;--------------------------------
 ;Interface Settings
@@ -129,7 +130,7 @@ FunctionEnd
 ;--------------------------------
 ;Launch App Inventor
 Function LaunchAppInventor
-  Exec '"C:\Python27\python.exe" run_App_Inventor.py'
+  Exec '"$PYTHON_PATH\python.exe" run_App_Inventor.py'
 FunctionEnd
 
 ;--------------------------------
