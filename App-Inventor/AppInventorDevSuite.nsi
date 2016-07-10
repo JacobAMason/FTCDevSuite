@@ -76,7 +76,7 @@ Var JAVA_INSTALL_DESC
 ;--------------------------------
 ;Installer Sections
 
-!include JavaSDK.7u80.${INSTALL_TYPE}.nsh
+!include JavaSDK.7u80.nsh
 !include Firefox.${INSTALL_TYPE}.nsh
 !include AndroidSDK.nsh
 !include Ant.${INSTALL_TYPE}.nsh
@@ -88,8 +88,6 @@ Var JAVA_INSTALL_DESC
 
 ;--------------------------------
 ;Initialize
-
-!include CheckJavaVersion.onInit.nsh
 
 Function .onInit
   !insertmacro CheckJavaVersion
