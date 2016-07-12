@@ -69,7 +69,7 @@ Var JAVA_INSTALL_DESC
 !define MUI_DIRECTORYPAGE_TEXT_DESTINATION "Choose the folder in which to place the FIRST Tech Challange App"
 !insertmacro MUI_PAGE_DIRECTORY
 
-!define MUI_PAGE_HEADER_SUBTEXT "Please wait while the FIRST Tech Challenge Android Development Suite is being installed."
+!define MUI_PAGE_HEADER_SUBTEXT "Please wait while the FIRST Tech Challenge Android Studio Development Suite is being installed."
 !insertmacro MUI_PAGE_INSTFILES
 
 !define MUI_FINISHPAGE_TITLE "${PRODUCT_NAME} Installation Complete"
