@@ -86,8 +86,8 @@ Var JAVA_INSTALL_DESC
 ;--------------------------------
 ;Installer Sections
 
-!include JavaSDK.7u80.nsh
-!include AndroidStudio.1.${INSTALL_TYPE}.nsh
+!include JavaSDK.8u92.nsh
+!include AndroidStudio.2.nsh
 !include AndroidSDK.nsh
 !include FTCapp.${INSTALL_TYPE}.nsh
 
@@ -133,7 +133,7 @@ FunctionEnd
 
 ;Language strings
 LangString DESC_JavaSDK ${LANG_ENGLISH} $JAVA_INSTALL_DESC
-LangString DESC_AndroidStudio ${LANG_ENGLISH} "Installs Android Studio 1.5.1"
+LangString DESC_AndroidStudio ${LANG_ENGLISH} "Installs Android Studio 2.1.2"
 LangString DESC_AndroidSDK ${LANG_ENGLISH} "Installs the proper SDK and API tools. You probably need this."
 !if ${INSTALL_TYPE} == "Full"
   LangString DESC_FTCapp ${LANG_ENGLISH} "Installs a copy of the FIRST Tech Challenge App"

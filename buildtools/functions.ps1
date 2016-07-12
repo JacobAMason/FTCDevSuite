@@ -24,6 +24,7 @@ function download-file ($title, $localfile, $url) {
 
 $md5 = New-Object System.Security.Cryptography.MD5CryptoServiceProvider
 $sha1 = New-Object System.Security.Cryptography.SHA1CryptoServiceProvider
+$sha256 = New-Object System.Security.Cryptography.SHA256CryptoServiceProvider
 $sha512 = New-Object System.Security.Cryptography.SHA512CryptoServiceProvider
 function check-hash ($checksumMethod, $localfile, $expectedHash, $title) {
     echo "Checking hash..."

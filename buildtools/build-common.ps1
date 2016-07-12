@@ -8,23 +8,45 @@ echo ""
 $localfile = "jdk-7u80-windows-i586.exe"
 if (!(Test-Path $localfile)) {
     Write-Color -Text "Couldn't find Java 7 SDK x86. Downloading it now: please wait." -Color "yellow"
-    $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie") 
+    $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie")
     $client.DownloadFile("http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-windows-i586.exe", (Get-Location).Path + "\" + $localfile)
 } else {
     Write-Color -Text "Java 7 SDK x86 found" -Color "green"
 }
-check-hash $md5 $localfile "8C-6C-88-89-93-14-4F-DB-DE-C6-F5-D4-E1-9B-57-A3" "Java 7 SDK x86" 
+check-hash $md5 $localfile "8C-6C-88-89-93-14-4F-DB-DE-C6-F5-D4-E1-9B-57-A3" "Java 7 SDK x86"
 
 echo ""
 $localfile = "jdk-7u80-windows-x64.exe"
 if (!(Test-Path $localfile)) {
     Write-Color -Text "Couldn't find Java 7 SDK x64. Downloading it now: please wait." -Color "yellow"
-    $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie") 
+    $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie")
     $client.DownloadFile("http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-windows-x64.exe", (Get-Location).Path + "\" + $localfile)
 } else {
     Write-Color -Text "Java 7 SDK x64 found" -Color "green"
 }
 check-hash $md5 $localfile "49-9B-22-4F-4D-A7-03-12-DD-D4-7C-48-24-E8-3A-DC" "Java 7 SDK x64"
+
+echo ""
+$localfile = "jdk-8u92-windows-i586.exe"
+if (!(Test-Path $localfile)) {
+    Write-Color -Text "Couldn't find Java 8 SDK x86. Downloading it now: please wait." -Color "yellow"
+    $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie")
+    $client.DownloadFile("http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-windows-i586.exe", (Get-Location).Path + "\" + $localfile)
+} else {
+    Write-Color -Text "Java 8 SDK x86 found" -Color "green"
+}
+check-hash $sha256 $localfile "9E-5D-DC-BF-9F-6C-96-7D-38-F0-BF-B6-D6-02-09-58-74-F2-9E-61-17-92-9C-7C-F1-20-6F-56-1F-AF-DF-30" "Java 8 SDK x86"
+
+echo ""
+$localfile = "jdk-8u92-windows-x64.exe"
+if (!(Test-Path $localfile)) {
+    Write-Color -Text "Couldn't find Java 8 SDK x64. Downloading it now: please wait." -Color "yellow"
+    $client.Headers.Add("Cookie: oraclelicense=accept-securebackup-cookie")
+    $client.DownloadFile("http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-windows-x64.exe", (Get-Location).Path + "\" + $localfile)
+} else {
+    Write-Color -Text "Java 8 SDK x64 found" -Color "green"
+}
+check-hash $sha256 $localfile "15-2E-B6-62-E7-ED-E5-96-6D-FB-42-B2-B7-DF-A3-BA-6D-78-4E-AF-B3-F6-ED-22-02-39-97-F3-03-16-BD-D1" "Java 8 SDK x64"
 
 echo ""
 $localfile = "installer_r24.4.1-windows.exe"
