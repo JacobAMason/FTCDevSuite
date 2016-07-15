@@ -4,7 +4,6 @@ Section "Android SDK" AndroidSDK
 !if ${INSTALL_TYPE} == "Net"
 
   ReadEnvStr $0 "SYSTEMDRIVE"
-  SetOutPath "$0\android-sdk"
   inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
              /caption "Android SDK 24.4.1" \
              "http://dl.google.com/android/android-sdk_r24.4.1-windows.zip" \
@@ -17,7 +16,9 @@ Section "Android SDK" AndroidSDK
     DetailPrint "Successfully downloaded Android SDK 24.4.1"
     DetailPrint "Installing Android SDK 24.4.1"
     ReadEnvStr $0 "SYSTEMDRIVE"
-    ZipDLL::extractall "$0\android-sdk\android-sdk_r24.4.1-windows.zip" "$0\android-sdk"
+    ZipDLL::extractall "$TEMP\android-sdk_r24.4.1-windows.zip" "$0"
+    ReadEnvStr $0 "SYSTEMDRIVE"
+    Rename "$0\android-sdk-windows" "$0\android-sdk"
   ${Else}
     Abort "Android SDK 24.4.1 SHA1 didn't match [$0]"
   ${EndIf}
