@@ -3,7 +3,6 @@ Section "Android SDK" AndroidSDK
 
 !if ${INSTALL_TYPE} == "Net"
 
-  ReadEnvStr $0 "SYSTEMDRIVE"
   inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
              /caption "Android SDK 24.4.1" \
              "http://dl.google.com/android/android-sdk_r24.4.1-windows.zip" \
@@ -15,10 +14,8 @@ Section "Android SDK" AndroidSDK
   ${OrIf} "OK" == $0
     DetailPrint "Successfully downloaded Android SDK 24.4.1"
     DetailPrint "Installing Android SDK 24.4.1"
-    ReadEnvStr $0 "SYSTEMDRIVE"
-    ZipDLL::extractall "$TEMP\android-sdk_r24.4.1-windows.zip" "$0"
-    ReadEnvStr $0 "SYSTEMDRIVE"
-    Rename "$0\android-sdk-windows" "$0\android-sdk"
+    ZipDLL::extractall "$TEMP\android-sdk_r24.4.1-windows.zip" "$SYSTEMDRIVE"
+    Rename "$SYSTEMDRIVE\android-sdk-windows" "$SYSTEMDRIVE\android-sdk"
   ${Else}
     Abort "Android SDK 24.4.1 SHA1 didn't match [$0]"
   ${EndIf}
@@ -26,24 +23,19 @@ Section "Android SDK" AndroidSDK
 
 !endif
 !if ${INSTALL_TYPE} == "Full"
-  ReadEnvStr $0 "SYSTEMDRIVE"
-  SetOutPath "$0\android-sdk"
+  SetOutPath "$SYSTEMDRIVE\android-sdk"
   File "..\data\android-sdk\AVD Manager.exe"
   File "..\data\android-sdk\SDK Manager.exe"
   File "..\data\android-sdk\SDK Readme.txt"
-
-  SetOutPath "$0\android-sdk"
   File /r "..\data\android-sdk\tools"
 !endif
 
   ${If} ${RunningX64}
     SetRegView 64
   ${EndIf}
-  ReadEnvStr $0 "SYSTEMDRIVE"
-  WriteRegExpandStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "ANDROID_HOME" "$0\android-sdk"
+  WriteRegExpandStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "ANDROID_HOME" "$SYSTEMDRIVE\android-sdk"
   SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
-  ReadEnvStr $0 "SYSTEMDRIVE"
-  System::Call 'Kernel32::SetEnvironmentVariable(t, t)i ("ANDROID_HOME", "$0\android-sdk").r0'
+  System::Call 'Kernel32::SetEnvironmentVariable(t, t)i ("ANDROID_HOME", "$SYSTEMDRIVE\android-sdk").r0'
 
   SetOutPath $TEMP
   File "..\data\add_sdk_to_path.ps1"

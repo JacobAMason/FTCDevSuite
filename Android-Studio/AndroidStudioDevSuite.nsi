@@ -36,6 +36,7 @@ BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} ${INSTALL_TYPE} Installer - Jac
 ;--------------------------------
 ;Variables
 
+Var SYSTEMDRIVE
 Var JDK_VERSION
 Var JDK_HOME
 Var JAVA_INSTALL_DESC
@@ -99,6 +100,8 @@ Var JAVA_INSTALL_DESC
 ;Initialize
 
 Function .onInit
+  ReadEnvStr $SYSTEMDRIVE "SYSTEMDRIVE"
+
   !insertmacro CheckJavaVersion
   !insertmacro CheckForAndroidSDK
 FunctionEnd

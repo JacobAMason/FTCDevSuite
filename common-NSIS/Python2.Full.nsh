@@ -10,8 +10,7 @@ Section "Python 2.7.11" Python2
     ExecWait 'msiexec /i "$TEMP\python-2.7.11.msi" /qn ALLUSERS=1 ADDLOCAL=ALL'
     Delete "$TEMP\python-2.7.11.msi"
   ${EndIf}
-  ReadEnvStr $0 "SYSTEMDRIVE"
-  StrCpy $PYTHON_PATH "$0\Python27"
+  StrCpy $PYTHON_PATH "$SYSTEMDRIVE\Python27"
 SectionEnd
 
 !macro CheckForPython
