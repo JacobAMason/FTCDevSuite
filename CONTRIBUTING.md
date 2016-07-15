@@ -14,9 +14,14 @@ To get started developing on this installer, you'll only need two things: a Wind
 ```
 git clone https://github.com/JacobAMason/FTCDevSuite.git
 ```
-2) Open Command Prompt to the FTCDevSuite directory and run 'build.bat'  
+2) Open Command Prompt to the project directory (either Android-Studio or App-Inventor) and run 'build.bat'  
 ```
-C:\Users\Contributor\FTCDevSuite>  build.bat  
-```  
+C:\Users\Contributor\FTCDevSuite\Android-Studio> build.bat  
+```
+
+## Versioning
+We're using annual versioning because FIRST Tech Challenge operates annually, therefore, this method of versioning will make it easier to figure out if the installer on your flash drive is from this season or last season.
+The version number will be in the format `YYYY.R` where `YYYY` is the year the FIRST Tech Challenge season begins and `R` is the release number.
+
 ## Roadmap
 I'm toying with the idea of including other tools in this installer as well, the first being Git. It's good to get in the habit of using Git early on, but if you're reading this, you probably already know that.  I'm also considering packaging in other very well-formed packages written by other teams. This would probably come in the form of an optional install component disabled by default. My primary concern, however, is to keep the size of the Full installer to a minimum. A time may soon come when these two installers  begin to diverge even more.
