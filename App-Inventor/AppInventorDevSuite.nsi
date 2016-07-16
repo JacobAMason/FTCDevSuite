@@ -32,6 +32,7 @@ BrandingText "${PRODUCT_NAME} ${PRODUCT_VERSION} ${INSTALL_TYPE} Installer - Jac
 ;--------------------------------
 ;Variables
 
+Var SYSTEMDRIVE
 Var JDK_VERSION
 Var JDK_HOME
 Var JAVA_INSTALL_DESC
@@ -91,6 +92,8 @@ Var PYTHON_PATH
 ;Initialize
 
 Function .onInit
+  ReadEnvStr $SYSTEMDRIVE "SYSTEMDRIVE"
+
   !insertmacro CheckJavaVersion
 
   ; Check for Chrome and Firefox. If Chrome exists, deselect Firefox. If Firefox exists, disable it in the installer.
