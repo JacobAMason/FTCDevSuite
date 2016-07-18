@@ -88,5 +88,9 @@ if (!(Test-Path "android-sdk\platform-tools\api")) {
     Write-Color -Text "Downloading platform-tools ..." -Color "yellow"
     echo y | & ".\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "platform-tools" | out-null
 }
+if (!(Test-Path "android-sdk\extras\android\m2repository\com\android\support")) {
+    Write-Color -Text "Downloading extra-android-m2repository ..." -Color "yellow"
+    echo y | & ".\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "extra-android-m2repository" | out-null
+}
 Write-Color -Text "All SDK and API dependencies present and accounted for" -Color "green"
 
