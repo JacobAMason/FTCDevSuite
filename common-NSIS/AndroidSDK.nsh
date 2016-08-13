@@ -53,7 +53,7 @@ Section "-Android SDK packages"
 !if ${INSTALL_TYPE} == "Full"
   ReadEnvStr $2 "ANDROID_HOME"
   SetOutPath "$2\build-tools"
-  File /r "..\data\android-sdk\build-tools\21.1.2"
+  File /r "..\data\android-sdk\build-tools\23.0.3"
 
   SetOutPath "$2\extras\google"
   File /r "..\data\android-sdk\extras\google\usb_driver"
@@ -63,6 +63,9 @@ Section "-Android SDK packages"
 
   SetOutPath "$2\platforms"
   File /r "..\data\android-sdk\platforms\android-19"
+
+  SetOutPath "$2\platforms"
+  File /r "..\data\android-sdk\platforms\android-23"
 
   SetOutPath $2
   File /r "..\data\android-sdk\platform-tools"

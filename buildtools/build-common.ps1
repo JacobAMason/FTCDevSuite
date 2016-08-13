@@ -72,9 +72,9 @@ if (!(Test-Path $localfile)) {
 
 echo ""
 Write-Color -Text "Checking SDK Tools and APIs" -Color "magenta"
-if (!(Test-Path "android-sdk\build-tools\21.1.2\")) {
-    Write-Color -Text "Downloading build-tools-21.1.2 ..." -Color "yellow"
-    echo y | & ".\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "build-tools-21.1.2" | out-null
+if (!(Test-Path "android-sdk\build-tools\23.0.3\")) {
+    Write-Color -Text "Downloading build-tools-23.0.3 ..." -Color "yellow"
+    echo y | & ".\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "build-tools-23.0.3" | out-null
 }
 if (!(Test-Path "android-sdk\extras\google\usb_driver\")) {
     Write-Color -Text "Downloading extra-google-usb_driver ..." -Color "yellow"
@@ -83,6 +83,10 @@ if (!(Test-Path "android-sdk\extras\google\usb_driver\")) {
 if (!(Test-Path "android-sdk\platforms\android-19\")) {
     Write-Color -Text "Downloading android-19 ..." -Color "yellow"
     echo y | & ".\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "android-19" | out-null
+}
+if (!(Test-Path "android-sdk\platforms\android-23\")) {
+    Write-Color -Text "Downloading android-23 ..." -Color "yellow"
+    echo y | & ".\android-sdk\tools\android.bat" --silent update sdk --all --no-ui --filter "android-23" | out-null
 }
 if (!(Test-Path "android-sdk\platform-tools\api")) {
     Write-Color -Text "Downloading platform-tools ..." -Color "yellow"

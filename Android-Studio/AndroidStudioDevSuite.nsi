@@ -92,10 +92,6 @@ Var JAVA_INSTALL_DESC
 !include AndroidSDK.nsh
 !include FTCapp.${INSTALL_TYPE}.nsh
 
-!if ${INSTALL_TYPE} == "Full"
-  !include Gradle.nsh
-!endif
-
 ;--------------------------------
 ;Initialize
 
