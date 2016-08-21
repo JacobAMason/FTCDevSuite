@@ -93,6 +93,13 @@ SectionEnd
     !insertmacro ClearSectionFlag ${JavaSDK} ${SF_SELECTED}
     !insertmacro SetSectionFlag ${JavaSDK} ${SF_RO}
     StrCpy $JAVA_INSTALL_DESC "You already have a JDK installed"
+
+    ; Adds JAVA_HOME environment variable if it doesn't exist
+    ReadEnvStr $0 "JAVA_HOME"
+    ${If} $0 == ""
+      WriteRegExpandStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "JAVA_HOME" "$JDK_HOME"
+      System::Call 'Kernel32::SetEnvironmentVariable(t, t)i ("JAVA_HOME", "$JDK_HOME").r0'
+    ${EndIf}
   ${EndIf}
 !macroend
 
