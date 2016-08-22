@@ -13,8 +13,8 @@ Write-Color -Text "Checking Dependencies" -Color "magenta"
 
 echo ""
 $localfile = "Git-2.8.3-32-bit.exe"
-download-file "Git x86" $localfile "https://github.com/git-for-windows/git/releases/download/v2.8.3.windows.1/Git-2.8.3-32-bit.exe" 
-check-hash $md5 $localfile "B3-E0-21-85-FD-35-27-07-54-75-54-3B-A5-6B-6B-E6" "Git x86" 
+download-file "Git x86" $localfile "https://github.com/git-for-windows/git/releases/download/v2.8.3.windows.1/Git-2.8.3-32-bit.exe"
+check-hash $md5 $localfile "B3-E0-21-85-FD-35-27-07-54-75-54-3B-A5-6B-6B-E6" "Git x86"
 
 echo ""
 $localfile = "Git-2.8.3-64-bit.exe"
@@ -56,12 +56,12 @@ if (!(Test-Path $localfile)) {
 echo ""
 $localfile = "python-2.7.11.msi"
 download-file "Python 2.7.11 x86" $localfile "https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi"
-check-hash $md5 $localfile "24-1B-F8-E0-97-AB-4E-10-47-D9-BB-4F-59-60-20-95" "Python 2.7.11 x86" 
+check-hash $md5 $localfile "24-1B-F8-E0-97-AB-4E-10-47-D9-BB-4F-59-60-20-95" "Python 2.7.11 x86"
 
 echo ""
 $localfile = "python-2.7.11.amd64.msi"
 download-file "Python 2.7.11 x64" $localfile "https://www.python.org/ftp/python/2.7.11/python-2.7.11.amd64.msi"
-check-hash $md5 $localfile "25-AC-CA-42-66-2D-4B-02-68-2E-EE-0D-F3-F3-44-6D" "Python 2.7.11 x64" 
+check-hash $md5 $localfile "25-AC-CA-42-66-2D-4B-02-68-2E-EE-0D-F3-F3-44-6D" "Python 2.7.11 x64"
 
 echo ""
 $localfile = "phantomjs-2.1.1-windows.zip"
@@ -79,17 +79,6 @@ if (!(Test-Path $localfile)) {
     Write-Color -Text "Zip appears to have already been extracted" -Color "green"
 }
 
-echo ""
-$localfile = "ChromeStandaloneSetup.exe"
-download-file "Google Chrome x32" $localfile "https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={C0A06FB4-6D0E-7BD9-D1F2-B4B227EB6A0B}&lang=en&browser=4&usagestats=0&appname=Google%20Chrome&needsadmin=true/update2/installers/ChromeStandaloneSetup.exe"
-check-hash $md5 $localfile "A3-E6-05-C2-3C-F0-01-93-6F-28-EA-58-D0-FD-39-10" "Google Chrome x32"
-
-echo ""
-$localfile = "ChromeStandaloneSetup64.exe"
-download-file "Google Chrome x64" $localfile "https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={C0A06FB4-6D0E-7BD9-D1F2-B4B227EB6A0B}&lang=en&browser=4&usagestats=0&appname=Google%20Chrome&needsadmin=true&ap=x64-stable/update2/installers/ChromeStandaloneSetup64.exe"
-check-hash $md5 $localfile "A4-B5-3E-B7-A1-90-4A-6E-BA-F0-3C-6F-09-C1-FA-09" "Google Chrome x64"
-
-echo ""
 $localfile = "Firefox Setup 47.0.exe"
 download-file "Firefox 47 x32" $localfile "https://ftp.mozilla.org/pub/firefox/releases/47.0/win32/en-US/Firefox%20Setup%2047.0.exe"
 check-hash $sha512 $localfile "50-74-19-d4-fb-79-2e-a3-69-54-58-6c-42-b8-76-d6-c6-c6-0d-c0-ef-4b-60-56-15-05-78-ca-49-4c-e8-81-58-fc-7f-c5-ba-10-13-b5-37-8f-7a-c9-56-0c-bb-7c-34-c7-3f-6d-bc-ea-51-aa-2e-61-ce-d6-4a-75-f9-81" "Firefox 47 x32"
