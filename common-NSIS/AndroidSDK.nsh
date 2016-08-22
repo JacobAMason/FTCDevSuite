@@ -58,9 +58,6 @@ Section "-Android SDK packages"
   SetOutPath "$2\extras\google"
   File /r "..\data\android-sdk\extras\google\usb_driver"
 
-  SetOutPath "$2\extras\android"
-  File /r "..\data\android-sdk\extras\android\m2repository"
-
   SetOutPath "$2\platforms"
   File /r "..\data\android-sdk\platforms\android-19"
 
