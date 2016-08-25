@@ -23,7 +23,7 @@ check-hash $sha1 $localfile "E9-BB-11-E3-48-63-96-37-E4-41-37-E3-0F-77-A4-B1-E8-
 
 echo ""
 $localfile = "ftc_app.zip"
-download-file "FTC app" $localfile "https://github.com/FIRST-Tech-Challenge/ftc_app/archive/master.zip"
+download-file "FTC app" $localfile "https://github.com/ftctechnh/ftc_app/archive/beta.zip"
 
 $localfile = "ftc_app\FtcRobotController\src\main\java\org\firstinspires\ftc\robotcontroller\"
 if (!(Test-Path $localfile)) {
@@ -32,7 +32,7 @@ if (!(Test-Path $localfile)) {
     $zipPackage = $shellApplication.NameSpace((Get-Location).Path + "\ftc_app.zip")
     $destinationFolder = $shellApplication.NameSpace((Get-Location).Path)
     $destinationFolder.CopyHere($zipPackage.items(), 20)
-    Rename-Item "$((Get-Location).Path)\ftc_app-master" "ftc_app"
+    Rename-Item "$((Get-Location).Path)\ftc_app-beta" "ftc_app"
 } else {
     Write-Color -Text "Zip appears to have already been extracted" -Color "green"
 }
