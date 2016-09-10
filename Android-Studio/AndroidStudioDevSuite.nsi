@@ -132,7 +132,7 @@ FunctionEnd
 
 ;Language strings
 LangString DESC_JavaSDK ${LANG_ENGLISH} $JAVA_INSTALL_DESC
-LangString DESC_AndroidStudio ${LANG_ENGLISH} "Installs Android Studio 2.1.2"
+LangString DESC_AndroidStudio ${LANG_ENGLISH} "Installs Android Studio 2.1.3"
 LangString DESC_AndroidSDK ${LANG_ENGLISH} "Installs the proper SDK and API tools. You probably need this."
 !if ${INSTALL_TYPE} == "Full"
   LangString DESC_FTCapp ${LANG_ENGLISH} "Installs a copy of the FIRST Tech Challenge App"

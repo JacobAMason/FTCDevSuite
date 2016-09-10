@@ -12,9 +12,9 @@ Write-Color -Text "Checking Dependencies" -Color "magenta"
 ."..\buildtools\build-common.ps1"
 
 echo ""
-$localfile = "android-studio-ide-143.2915827-windows.exe"
-download-file "Android Studio 2.1.2.0" $localfile "https://dl.google.com/dl/android/studio/install/2.1.2.0/android-studio-ide-143.2915827-windows.exe"
-check-hash $sha1 $localfile "E9-BB-11-E3-48-63-96-37-E4-41-37-E3-0F-77-A4-B1-E8-78-3E-B0" "Android Studio"
+$localfile = "android-studio-ide-143.3101438-windows.exe"
+download-file "Android Studio 2.1.3.0" $localfile "https://dl.google.com/dl/android/studio/install/2.1.3.0/android-studio-ide-143.3101438-windows.exe"
+check-hash $sha1 $localfile "43-F8-4D-E7-E6-1F-37-88-0A-12-6C-3D-56-7B-7F-A6-CB-90-C9-0E" "Android Studio"
 
 echo ""
 $localfile = "ftc_app.zip"
