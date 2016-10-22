@@ -90,7 +90,7 @@ check-hash $sha512 $localfile "d7-0f-c9-7d-66-bf-4f-cc-8b-77-b7-15-11-b5-e6-ae-2
 
 echo ""
 $localfile = "appinventor-sources.zip"
-download-file "MIT App Inventor" $localfile "https://github.com/lizlooney/appinventor-sources/archive/future.zip"
+download-file "MIT App Inventor" $localfile "https://github.com/lizlooney/appinventor-sources/archive/ftc_v2.35_20161006.zip"
 
 $localfile = "appinventor-sources\appinventor\buildserver\src\com\google\appinventor\buildserver\"
 if (!(Test-Path $localfile)) {
@@ -99,7 +99,7 @@ if (!(Test-Path $localfile)) {
     $zipPackage = $shellApplication.NameSpace((Get-Location).Path + "\appinventor-sources.zip")
     $destinationFolder = $shellApplication.NameSpace((Get-Location).Path)
     $destinationFolder.CopyHere($zipPackage.items(), 20)
-    Rename-Item "$((Get-Location).Path)\appinventor-sources-future" "appinventor-sources"
+    Rename-Item "$((Get-Location).Path)\appinventor-sources-ftc_v2.35_20161006" "appinventor-sources"
 } else {
     Write-Color -Text "Zip appears to have already been extracted" -Color "green"
 }
