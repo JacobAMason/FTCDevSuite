@@ -1,1 +1,6 @@
-echo y | "%ANDROID_HOME%\tools\android.bat" --silent update sdk --all --no-ui --filter "build-tools-23.0.3,extra-google-usb_driver,android-19,android-23,platform-tools"
+echo y| "%ANDROID_HOME%\tools\bin\sdkmanager.bat" "build-tools;23.0.3"
+echo y| "%ANDROID_HOME%\tools\bin\sdkmanager.bat" "extras;google;usb_driver"
+echo y| "%ANDROID_HOME%\tools\bin\sdkmanager.bat" "platforms;android-19"
+echo y| "%ANDROID_HOME%\tools\bin\sdkmanager.bat" "platforms;android-23"
+echo y| "%ANDROID_HOME%\tools\bin\sdkmanager.bat" "platform-tools"
+

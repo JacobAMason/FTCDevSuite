@@ -8,14 +8,15 @@ This "suite" is really just a Windows-specific installer built with [NSIS]([http
 
 ### What does this set up for me?
 
- - [Java 8 (JDK and JRE 1.8.0_92)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
- - [Android Studio 2.1.2](https://sites.google.com/a/android.com/tools/download/studio/builds/android-studio-2-1-2)
- - Android SDK Tools 24.4.1 which includes the following:
-   - Platform Tools (23.1 or latest)
-   - Android API 19 - SDK Platform
-   - Build Tools 21.1.2
-   - Google USB Driver (11 or latest)
- - FTC Robot Controller beta source code(latest at compile<sup>[1](#latest-at-compile)</sup>)
+ - [Java 8 (JDK and JRE 1.8.0)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+ - [Android Studio 2.3.0](https://developer.android.com/studio/index.html)
+ - Android SDK Tools which includes the following:
+   - Platform Tools
+   - Android API 19 (for the ZTE Speed)
+   - Android API 23 (for the MotoG)
+   - Build Tools 23.0.3
+   - Google USB Driver
+ - ftc_app source code(latest at compile<sup>[1](#latest-at-compile)</sup>)
 
 ### Which installer should I use?
 **Full Installer**
@@ -30,4 +31,4 @@ If you want to use this installer to guarantee that you've set up your personal 
 If you have have issues with the installer either [email me](mailto:jacob@jacobmason.net) or, preferably, [open an issue](https://github.com/JacobAMason/FTCDevSuite/issues/new).
 
 
-<a name="latest-at-compile">1</a>: The version of ftc_app that installs when running the Net installer is the latest version on the beta branch of the official repository. However, the version of ftc_app in the Full installer is the latest version on the beta branch *at the time the installer was* ***first*** *compiled*.
+<a name="latest-at-compile">1</a>: The version of ftc_app that installs when running the Net installer is the latest version on the beta branch of the official repository. However, the version of ftc_app in the Full installer is the latest version on the beta branch *at the time the installer was* ***first*** *compiled*. If you are getting your download from the releases page, the release notes will say what version of the ftc_app is included with the Full build.

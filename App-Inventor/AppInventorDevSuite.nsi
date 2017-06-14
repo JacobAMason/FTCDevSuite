@@ -78,7 +78,7 @@ Var PYTHON_PATH
 ;--------------------------------
 ;Installer Sections
 
-!include JavaSDK.7u80.nsh
+!include JavaSDK.nsh
 !include Firefox.${INSTALL_TYPE}.nsh
 !include AndroidSDK.nsh
 !include Ant.${INSTALL_TYPE}.nsh

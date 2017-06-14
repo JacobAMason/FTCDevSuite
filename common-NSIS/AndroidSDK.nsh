@@ -4,35 +4,29 @@ Section "Android SDK" AndroidSDK
 !if ${INSTALL_TYPE} == "Net"
 
   inetc::get /WEAKSECURITY /NOCOOKIES /RESUME "" \
-             /caption "Android SDK 24.4.1" \
-             "http://dl.google.com/android/android-sdk_r24.4.1-windows.zip" \
-             "$TEMP\android-sdk_r24.4.1-windows.zip" /end
-  Crypto::HashFile "SHA1" "$TEMP\android-sdk_r24.4.1-windows.zip"
+             /caption "Android SDK" \
+             "https://dl.google.com/android/repository/sdk-tools-windows-3859397.zip" \
+             "$TEMP\sdk-tools-windows-3859397.zip" /end
+  Crypto::HashFile "SHA2-512" "$TEMP\sdk-tools-windows-3859397.zip"
   Pop $0
-  ${If} "66B6A6433053C152B22BF8CAB19C0F3FEF4EBA49" == $0
-    DetailPrint "SHA1 hash for Android SDK 24.4.1 is good"
+  ${If} "5FB73A994DD7B125C963EC8E193538C2B0C59432E991112F62EBD7308BB0E79B873AB7EC653F15255401BB5500C11AD2E6C6894BF546FCC443122B527409DA24" == $0
+    DetailPrint "SHA512 hash for Android SDK is good"
   ${OrIf} "OK" == $0
-    DetailPrint "Successfully downloaded Android SDK 24.4.1"
-    DetailPrint "Installing Android SDK 24.4.1"
-    ZipDLL::extractall "$TEMP\android-sdk_r24.4.1-windows.zip" "$SYSTEMDRIVE"
-    Rename "$SYSTEMDRIVE\android-sdk-windows" "$SYSTEMDRIVE\android-sdk"
+    DetailPrint "Successfully downloaded Android SDK"
+    DetailPrint "Installing Android SDK"
+    ZipDLL::extractall "$TEMP\sdk-tools-windows-3859397.zip" "$SYSTEMDRIVE\android-sdk\"
+    Rename "$SYSTEMDRIVE\sdk-tools-windows-3859397" "$SYSTEMDRIVE\android-sdk\tools"
   ${Else}
-    Abort "Android SDK 24.4.1 SHA1 didn't match [$0]"
+    Abort "Android SDK SHA512 didn't match [$0]"
   ${EndIf}
-  Delete "$TEMP\android-sdk_r24.4.1-windows.zip"
+  Delete "$TEMP\sdk-tools-windows-3859397.zip"
 
 !endif
 !if ${INSTALL_TYPE} == "Full"
   SetOutPath "$SYSTEMDRIVE\android-sdk"
-  File "..\data\android-sdk\AVD Manager.exe"
-  File "..\data\android-sdk\SDK Manager.exe"
-  File "..\data\android-sdk\SDK Readme.txt"
   File /r "..\data\android-sdk\tools"
 !endif
 
-  ${If} ${RunningX64}
-    SetRegView 64
-  ${EndIf}
   WriteRegExpandStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "ANDROID_HOME" "$SYSTEMDRIVE\android-sdk"
   SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
   System::Call 'Kernel32::SetEnvironmentVariable(t, t)i ("ANDROID_HOME", "$SYSTEMDRIVE\android-sdk").r0'
